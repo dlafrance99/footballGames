@@ -13,7 +13,7 @@ const App = () => {
   const [ErrorMessage, setErrorMessage] = useState('')
 
   const handlePassword = () => {
-    if (Password.toLowerCase().trim() === 'respectthecommish') {
+    if (Password.toLowerCase().trim() === 'bestcommish3v3r') {
       setLoggedIn(true)
     } else {
       setErrorMessage('Wrong Password')

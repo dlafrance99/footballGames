@@ -112,7 +112,7 @@ const NFLMatch = () => {
                                 {
                                     CurrentSelected.includes(i) || Solved.includes(GameData[i].imgUrl)
                                         ?
-                                        <div key={i} style={{ flex: 4, height: '15vw', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white', display: 'flex', alignItems: 'center' }}>
+                                        <div key={i} style={{ flex: 4, height: '15vw', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white',margin: '15px', display: 'flex', alignItems: 'center' }}>
                                             <img
                                                 src={GameData[i].imgUrl}
                                                 style={{ objectFit: 'contain' }}
@@ -121,15 +121,15 @@ const NFLMatch = () => {
                                             />
                                         </div>
                                         :
-                                        <div key={i} onClick={() => handleSelection(i, GameData[i].imgUrl)} style={{ flex: 4, height: '15vw', justifyContent: 'center', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white', display: 'flex', alignItems: 'center' }}>
-                                            <h1>
-                                                Respect the Commish
+                                        <div key={i} onClick={() => handleSelection(i, GameData[i].imgUrl)} style={{ flex: 4, height: '15vw', justifyContent: 'center', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white',margin: '15px', display: 'flex', alignItems: 'center' }}>
+                                            <h1 style={{ fontFamily: 'Luminari, fantasy', letterSpacing: '5px' }}>
+                                                Fantasies
                                             </h1>
                                         </div>
                                 }
                             </>
                             :
-                            <div key={i + 3} style={{ flex: 4, height: '15vw', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white', display: 'flex', alignItems: 'center' }}>
+                            <div key={i + 3} style={{ flex: 4, height: '15vw', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white',margin: '15px', display: 'flex', alignItems: 'center' }}>
 
                             </div>
                     }
@@ -141,7 +141,7 @@ const NFLMatch = () => {
                                 {
                                     CurrentSelected.includes(i + 1) || Solved.includes(GameData[i + 1].imgUrl)
                                         ?
-                                        <div key={i + 1} style={{ flex: 4, height: '15vw', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white', display: 'flex', alignItems: 'center' }}>
+                                        <div key={i + 1} style={{ flex: 4, height: '15vw', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white',margin: '15px', display: 'flex', alignItems: 'center' }}>
                                             <img
                                                 src={GameData[i + 1].imgUrl}
                                                 style={{ objectFit: 'contain' }}
@@ -150,15 +150,15 @@ const NFLMatch = () => {
                                             />
                                         </div>
                                         :
-                                        <div key={i + 1} onClick={() => handleSelection(i + 1, GameData[i + 1].imgUrl)} style={{ flex: 4, height: '15vw', justifyContent: 'center', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white', display: 'flex', alignItems: 'center' }}>
-                                            <h1>
-                                                Respect the Commish
+                                        <div key={i + 1} onClick={() => handleSelection(i + 1, GameData[i + 1].imgUrl)} style={{ flex: 4, height: '15vw', justifyContent: 'center', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white',margin: '15px', display: 'flex', alignItems: 'center' }}>
+                                            <h1 style={{ fontFamily: 'Luminari, fantasy', letterSpacing: '5px' }}>
+                                                Fantasies
                                             </h1>
                                         </div>
                                 }
                             </>
                             :
-                            <div key={i + 3} style={{ flex: 4, height: '15vw', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white', display: 'flex', alignItems: 'center' }}>
+                            <div key={i + 3} style={{ flex: 4, height: '15vw', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white',margin: '15px', display: 'flex', alignItems: 'center' }}>
 
                             </div>
                     }
@@ -170,7 +170,7 @@ const NFLMatch = () => {
                                 {
                                     CurrentSelected.includes(i + 2) || Solved.includes(GameData[i + 2].imgUrl)
                                         ?
-                                        <div key={i + 2} style={{ flex: 4, height: '15vw', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white', display: 'flex', alignItems: 'center' }}>
+                                        <div key={i + 2} style={{ flex: 4, height: '15vw', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white',margin: '15px', display: 'flex', alignItems: 'center' }}>
                                             <img
                                                 src={GameData[i + 2].imgUrl}
                                                 style={{ objectFit: 'contain' }}
@@ -179,15 +179,15 @@ const NFLMatch = () => {
                                             />
                                         </div>
                                         :
-                                        <div key={i + 2} onClick={() => handleSelection(i + 2, GameData[i + 2].imgUrl)} style={{ flex: 4, height: '15vw', justifyContent: 'center', verticalAlign: 'middle', border: '1px solid white', display: 'flex', alignItems: 'center' }}>
-                                            <h1>
-                                                Respect the Commish
+                                        <div key={i + 2} onClick={() => handleSelection(i + 2, GameData[i + 2].imgUrl)} style={{ flex: 4, height: '15vw', justifyContent: 'center', verticalAlign: 'middle', border: '1px solid white',margin: '15px', display: 'flex', alignItems: 'center' }}>
+                                            <h1 style={{ fontFamily: 'Luminari, fantasy', letterSpacing: '5px' }}>
+                                                Fantasies
                                             </h1>
                                         </div>
                                 }
                             </>
                             :
-                            <div key={i + 2} style={{ flex: 4, height: '15vw', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white', display: 'flex', alignItems: 'center' }}>
+                            <div key={i + 2} style={{ flex: 4, height: '15vw', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white',margin: '15px', display: 'flex', alignItems: 'center' }}>
 
                             </div>
                     }
@@ -199,7 +199,7 @@ const NFLMatch = () => {
                                 {
                                     CurrentSelected.includes(i + 3) || Solved.includes(GameData[i + 3].imgUrl)
                                         ?
-                                        <div key={i + 3} style={{ flex: 4, height: '15vw', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white', display: 'flex', alignItems: 'center' }}>
+                                        <div key={i + 3} style={{ flex: 4, height: '15vw', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white',margin: '15px', display: 'flex', alignItems: 'center' }}>
                                             <img
                                                 src={GameData[i + 3].imgUrl}
                                                 style={{ objectFit: 'contain' }}
@@ -208,15 +208,15 @@ const NFLMatch = () => {
                                             />
                                         </div>
                                         :
-                                        <div key={i + 3} onClick={() => handleSelection(i + 3, GameData[i + 3].imgUrl)} style={{ flex: 4, height: '15vw', justifyContent: 'center', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white', display: 'flex', alignItems: 'center' }}>
-                                            <h1>
-                                                Respect the Commish
+                                        <div key={i + 3} onClick={() => handleSelection(i + 3, GameData[i + 3].imgUrl)} style={{ flex: 4, height: '15vw', justifyContent: 'center', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white',margin: '15px', display: 'flex', alignItems: 'center' }}>
+                                            <h1 style={{ fontFamily: 'Luminari, fantasy', letterSpacing: '5px' }}>
+                                                Fantasies
                                             </h1>
                                         </div>
                                 }
                             </>
                             :
-                            <div key={i + 3} style={{ flex: 4, height: '15vw', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white', display: 'flex', alignItems: 'center' }}>
+                            <div key={i + 3} style={{ flex: 4, height: '15vw', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white',margin: '15px', display: 'flex', alignItems: 'center' }}>
 
                             </div>
                     }
@@ -244,11 +244,11 @@ const NFLMatch = () => {
     const ShowGameOverTime = () => {
         let GameStartTime = StartTime
         let GameEndTime = EndTime
-        let GameDuration = Math.abs(GameEndTime-GameStartTime)
+        let GameDuration = Math.abs(GameEndTime - GameStartTime)
 
         GameStartTime = `Start Time:  ${GameStartTime.getHours() > 12 ? GameStartTime.getHours() - 12 : GameStartTime.getHours()}:${(GameStartTime.getMinutes() < 10 ? '0' : '') + GameStartTime.getMinutes()}:${(GameStartTime.getSeconds() < 10 ? '0' : '') + GameStartTime.getSeconds()}.${GameStartTime.getMilliseconds()} ${GameStartTime.getHours() > 12 ? 'PM' : 'AM'}`
         GameEndTime = `End Time: ${GameEndTime.getHours() > 12 ? GameEndTime.getHours() - 12 : GameEndTime.getHours()}:${(GameEndTime.getMinutes() < 10 ? '0' : '') + GameEndTime.getMinutes()}:${(GameEndTime.getSeconds() < 10 ? '0' : '') + GameEndTime.getSeconds()}.${GameEndTime.getMilliseconds()} ${GameEndTime.getHours() > 12 ? 'PM' : 'AM'}`
-        GameDuration = new Date(GameDuration).toISOString().slice(11,23)
+        GameDuration = new Date(GameDuration).toISOString().slice(11, 23)
         GameDuration = `Duration: ${GameDuration}`
         return (
             <>
@@ -315,7 +315,7 @@ const NFLMatch = () => {
 
                         <Row style={{ margin: '5px' }}>
                             <Col sm={24}>
-                                <h1>
+                                <h1 style={{ fontFamily: 'Luminari, fantasy', letterSpacing: '5px' }}>
                                     {showGameRound()}
                                 </h1>
                             </Col>
