@@ -13,6 +13,12 @@
   }
 }
 
+.GameCard { 
+  min-height: 10vh;
+  border: 3px solid red;
+  border-radius: 10px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -24,6 +30,10 @@
   color: white;
 }
 
+.Navigation {
+  background-color: gray;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -32,6 +42,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

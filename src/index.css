@@ -36,6 +36,17 @@ h2 {
   text-align: center;
 }
 
+h3 {
+  margin: 0px;
+  color: white;
+  text-align: center;
+}
+
+.Header {
+  margin-top: 10px;
+  font-size: 26px;
+}
+
 .GameTitle {
   margin-top: 10px;
   font-size: 26px;
@@ -62,8 +73,18 @@ h2 {
   padding-bottom: 15px;
 }
 
+.TeamContainer {
+  text-align: center;
+  border: 1px solid white;
+  max-width: 95vw;
+  margin: auto;
+  height: 75vh;
+  position: relative;
+}
+
 .Guesses {
   text-align: center;
+  margin: auto;
 }
 
 .GameGuesses {
