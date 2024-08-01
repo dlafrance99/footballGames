@@ -38,8 +38,6 @@ const Footbordle = () => {
     const getPlayer = () => {
         let RandomNumber = Math.floor(Math.random() * NFLPlayerList.length)
 
-        console.log(NFLPlayerList[RandomNumber])
-
         setChosenPlayer({ Rank: NFLPlayerList[RandomNumber].Rank, First: NFLPlayerList[RandomNumber].First.toUpperCase(), Last: NFLPlayerList[RandomNumber].Last.toUpperCase(), Position: NFLPlayerList[RandomNumber].Position.toUpperCase(), Team: NFLPlayerList[RandomNumber].Team.toUpperCase() })
     }
 
@@ -49,11 +47,7 @@ const Footbordle = () => {
         let TENum = NFLPlayerList.filter((player) => player.Position === 'TE')
         let RBNum = NFLPlayerList.filter((player) => player.Position === 'RB')
         let WRNum = NFLPlayerList.filter((player) => player.Position === 'WR')
-        let QBNum = NFLPlayerList.filter((player) => player.Position === 'QB')
-        console.log(TENum)
-        console.log(RBNum.length)
-        console.log(WRNum.length)
-        console.log(QBNum.length)
+        let QBNum = NFLPlayerList.filter((player) => player.Position === 'QB')        
     }, [])
 
     const handleGuess = () => {

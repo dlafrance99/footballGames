@@ -4,13 +4,19 @@ import { Grid, Row, Col, Input, Button, ButtonToolbar } from 'rsuite';
 import CheckIcon from '@rsuite/icons/Check';
 import CloseIcon from '@rsuite/icons/Close';
 
+import GameSelectionScreen from './Games/GameSelectionScreen';
 import Footbordle from './Games/Footbordle';
 import NFLMatch from './Games/NFLMatch'
+import FindThunder from './Games/FindThunder'
+import Leaderboard from './Games/Leaderboard'
 
 const App = () => {
   const [LoggedIn, setLoggedIn] = useState(false)
   const [Password, setPassword] = useState('')
   const [ErrorMessage, setErrorMessage] = useState('')
+
+  const [GameSelection, setGameSelection] = useState('Game Selection')
+  const [NavHover, setNavHover] = useState('')
 
   const handlePassword = () => {
     if (Password.toLowerCase().trim() === 'bestcommish3v3r') {
@@ -22,26 +28,89 @@ const App = () => {
 
   return (
     <Grid className='Wrapper'>
+      <Row className='Header'>
+        <Col sm={24}>
+          <h1>
+            Fantasy Football 5.0
+          </h1>
+        </Col>
+      </Row>
+      <Row>
+        <Col sm={24} className='Navigation' style={{ display: 'flex', justifyContent: 'end' }}>
+          <div
+            onClick={() => setGameSelection('Game Selection')}
+            onMouseEnter={() => setNavHover('Game Selection')}
+            onMouseLeave={() => setNavHover('')}
+            style={{ height: '40px', cursor: 'pointer', paddingRight: '5px', paddingLeft: '5px', alignContent: 'center', backgroundColor: NavHover === 'Game Selection' ? 'black' : 'gray' }}
+          >
+            <h4 style={{ color: 'white', marginTop: 0, marginBottom: 0 }}>
+              Game Selection
+            </h4>
+          </div>
+
+          <div
+            onClick={() => setGameSelection('Leaderboard')}
+            onMouseEnter={() => setNavHover('Leaderboard')}
+            onMouseLeave={() => setNavHover('')}
+            style={{ height: '40px', cursor: 'pointer', paddingRight: '5px', paddingLeft: '5px', alignContent: 'center', backgroundColor: NavHover === 'Leaderboard' ? 'black' : 'gray' }}
+          >
+            <h4 style={{ color: 'white', marginTop: 0, marginBottom: 0 }}>
+              Leaderboard
+            </h4>
+          </div>
+        </Col>
+      </Row>
+
       {
+        GameSelection === 'Game Selection' && (
+          <GameSelectionScreen
+            handleGameSelection={(value) => setGameSelection(value)}
+          />
+        )
+      }
+
+      {
+        GameSelection === 'Leaderboard' && (
+          <Leaderboard />
+        )
+      }
+
+      {
+        GameSelection === 'Wheres Thunder' && (
+          <FindThunder />
+        )
+      }
+
+      {
+        GameSelection === 'NFL Match' && (
+          <NFLMatch />
+        )
+      }
+
+      {
+        GameSelection === 'Footbordle' && (
+          <Footbordle />
+        )
+      }
+      {/* {
         LoggedIn
           ?
-          <NFLMatch />
           :
           <>
             <Row style={{ marginTop: '30vh' }}>
-              <h1 className='Guesses' style={{ color: 'white' }}>
+              <h1 className='GameGuesses' style={{ color: 'white' }}>
                 Password
               </h1>
               {
                 ErrorMessage
                   ?
-                  <h3 className='Guesses' style={{ color: 'red' }}>
+                  <h3 className='GameGuesses' style={{ color: 'red' }}>
                     {ErrorMessage}
                   </h3>
                   :
                   null
               }
-              <Col sm={24} className='Guesses' >
+              <Col sm={24} className='GameGuesses' >
                 <Input
                   style={{ color: 'black', width: '50%', backgroundColor: 'white', border: '1px solid white', fontSize: '50px' }}
                   onPressEnter={() => handlePassword()}
@@ -60,7 +129,7 @@ const App = () => {
               </Col>
             </Row>
           </>
-      }
+      } */}
     </Grid>
   )
 };
