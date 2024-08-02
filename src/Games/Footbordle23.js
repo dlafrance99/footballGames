@@ -6,7 +6,7 @@ import CloseIcon from '@rsuite/icons/Close';
 
 import NFLPlayerList from '../NFLPlayerList';
 
-const Footbordle = () => {
+const Footbordle23 = () => {
     const [GameOver, setGameOver] = useState(false)
     const [GameOverTime, setGameOverTime] = useState(false)
 
@@ -188,7 +188,7 @@ const Footbordle = () => {
             <Row className='GameTitle'>
                 <Col sm={24}>
                     <h1>
-                        Fantasy Footbordle
+                        Fantasy Footbordle 23
                     </h1>
                 </Col>
             </Row>
@@ -325,4 +325,4 @@ const Footbordle = () => {
     )
 };
 
-export default Footbordle;
+export default Footbordle23;

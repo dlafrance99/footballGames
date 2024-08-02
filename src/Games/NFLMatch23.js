@@ -7,7 +7,7 @@ import axios from 'axios'
 
 import NFLPlayerList from '../NFLPlayerList';
 
-const NFLMatch = () => {
+const NFLMatch23 = () => {
     const [GameOver, setGameOver] = useState(false)
     const [GameRound, setGameRound] = useState(0)
     const [GameData, setGameData] = useState(0)
@@ -278,7 +278,7 @@ const NFLMatch = () => {
             <Row className='GameTitle'>
                 <Col sm={24}>
                     <h1>
-                        Fantasy NFL Match
+                        Fantasy NFL Match 23
                     </h1>
                 </Col>
             </Row>
@@ -329,4 +329,4 @@ const NFLMatch = () => {
     )
 };
 
-export default NFLMatch;
+export default NFLMatch23;

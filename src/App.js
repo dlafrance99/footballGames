@@ -5,8 +5,8 @@ import CheckIcon from '@rsuite/icons/Check';
 import CloseIcon from '@rsuite/icons/Close';
 
 import GameSelectionScreen from './Games/GameSelectionScreen';
-import Footbordle from './Games/Footbordle';
-import NFLMatch from './Games/NFLMatch'
+import Footbordle23 from './Games/Footbordle23';
+import NFLMatch23 from './Games/NFLMatch23'
 import FindThunder from './Games/FindThunder'
 import Leaderboard from './Games/Leaderboard'
 
@@ -82,14 +82,14 @@ const App = () => {
       }
 
       {
-        GameSelection === 'NFL Match' && (
-          <NFLMatch />
+        GameSelection === 'NFLMatch23' && (
+          <NFLMatch23 />
         )
       }
 
       {
-        GameSelection === 'Footbordle' && (
-          <Footbordle />
+        GameSelection === 'Footbordle23' && (
+          <Footbordle23 />
         )
       }
       {/* {
