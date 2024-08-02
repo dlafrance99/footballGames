@@ -1,15 +1,17 @@
 {
   "files": {
     "main.css": "/footballGames/static/css/main.ef4d1104.css",
-    "main.js": "/footballGames/static/js/main.c9554638.js",
+    "main.js": "/footballGames/static/js/main.c1d4f04c.js",
     "static/js/787.e0bc491a.chunk.js": "/footballGames/static/js/787.e0bc491a.chunk.js",
     "static/media/Coming_Soon.png": "/footballGames/static/media/Coming_Soon.12a51272b76700e611f8.png",
-    "static/media/NFL_Match.png": "/footballGames/static/media/NFL_Match.10da4d72098f0dc673c3.png",
+    "static/media/NFLMatch24.png": "/footballGames/static/media/NFLMatch24.cfd2498145fa5b5da147.png",
+    "static/media/NFLMatch23.png": "/footballGames/static/media/NFLMatch23.56772778a102db3c0dee.png",
     "static/media/Wheres_Thunder.png": "/footballGames/static/media/Wheres_Thunder.70a17fb5352e3f4fbdae.png",
     "static/media/Browns.png": "/footballGames/static/media/Browns.58b59912ba5d5f27b22d.png",
-    "static/media/Footbordle.png": "/footballGames/static/media/Footbordle.09e2b8a031efba3d24f0.png",
     "static/media/Jaguars.png": "/footballGames/static/media/Jaguars.d32ed808db23963e0eb4.png",
     "static/media/Vikings.png": "/footballGames/static/media/Vikings.62a95e719b7b26333e56.png",
+    "static/media/Footbordle23.png": "/footballGames/static/media/Footbordle23.388dd815c64b35d93e90.png",
+    "static/media/Footbordle24.png": "/footballGames/static/media/Footbordle24.c57a1c18e906a06674bc.png",
     "static/media/Titans.png": "/footballGames/static/media/Titans.748f7f930bcde6d3df94.png",
     "static/media/Eagles.png": "/footballGames/static/media/Eagles.91d8313f1df3a91b3541.png",
     "static/media/Ravens.png": "/footballGames/static/media/Ravens.8dcfc6c70a6ad79ec020.png",
@@ -41,11 +43,11 @@
     "static/media/Rams.png": "/footballGames/static/media/Rams.004a62247b8e1c255944.png",
     "index.html": "/footballGames/index.html",
     "main.ef4d1104.css.map": "/footballGames/static/css/main.ef4d1104.css.map",
-    "main.c9554638.js.map": "/footballGames/static/js/main.c9554638.js.map",
+    "main.c1d4f04c.js.map": "/footballGames/static/js/main.c1d4f04c.js.map",
     "787.e0bc491a.chunk.js.map": "/footballGames/static/js/787.e0bc491a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ef4d1104.css",
-    "static/js/main.c9554638.js"
+    "static/js/main.c1d4f04c.js"
   ]
 }
