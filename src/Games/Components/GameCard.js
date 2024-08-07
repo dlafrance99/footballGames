@@ -12,7 +12,7 @@ const GameCard = ({ Title, availableDates }) => {
 
     //Functions--------------------------------------------------
     const convertTitle = (value) => {
-        return value.replace(' ', '_')
+        return value.replaceAll(' ','_')
     }
 
     const convertDates = (value) => {

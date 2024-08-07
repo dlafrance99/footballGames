@@ -6,6 +6,8 @@ import CloseIcon from '@rsuite/icons/Close';
 
 import GameSelectionScreen from './Games/GameSelectionScreen';
 import Footbordle23 from './Games/Footbordle23';
+import Footbordle24 from './Games/Footbordle24';
+import UpAndDownTheNFL from './Games/UpAndDownTheNFL';
 import NFLMatch23 from './Games/NFLMatch23'
 import FindThunder from './Games/FindThunder'
 import Leaderboard from './Games/Leaderboard'
@@ -78,6 +80,18 @@ const App = () => {
       {
         GameSelection === 'Wheres Thunder' && (
           <FindThunder />
+        )
+      }
+
+      {
+        GameSelection === 'Footbordle24' && (
+          <Footbordle24 />
+        )
+      }
+
+      {
+        GameSelection === 'Up And Down The NFL' && (
+          <UpAndDownTheNFL />
         )
       }
 
