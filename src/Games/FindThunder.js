@@ -16,11 +16,6 @@ const FindThunder = () => {
 
     const parentRef = useRef(null)
 
-    useEffect(() => {
-        console.log(GameStartTime);
-        console.log(GameOverTime);
-    }, [GameStartTime, GameOverTime])
-
     const getRandomNum = (min, max) => {
         return Math.random() * (max - min) + min;
     }
