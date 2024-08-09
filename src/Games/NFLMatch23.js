@@ -5,7 +5,7 @@ import CheckIcon from '@rsuite/icons/Check';
 import CloseIcon from '@rsuite/icons/Close';
 import axios from 'axios'
 
-import NFLPlayerList from '../NFLPlayerList';
+import NFLPlayerList23 from '../NFLPlayerList23';
 
 const NFLMatch23 = () => {
     const [GameOver, setGameOver] = useState(false)
@@ -16,10 +16,10 @@ const NFLMatch23 = () => {
     const [StartTime, setStartTime] = useState()
     const [EndTime, setEndTime] = useState()
 
-    const TEList = NFLPlayerList.filter(player => player.Position === 'TE')
-    const QBList = NFLPlayerList.filter(player => player.Position === 'QB')
-    const RBList = NFLPlayerList.filter(player => player.Position === 'RB')
-    const WRList = NFLPlayerList.filter(player => player.Position === 'WR')
+    const TEList = NFLPlayerList23.filter(player => player.Position === 'TE')
+    const QBList = NFLPlayerList23.filter(player => player.Position === 'QB')
+    const RBList = NFLPlayerList23.filter(player => player.Position === 'RB')
+    const WRList = NFLPlayerList23.filter(player => player.Position === 'WR')
 
     const shuffle = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
@@ -267,14 +267,6 @@ const NFLMatch23 = () => {
 
     return (
         <Grid className='Wrapper'>
-            <Row className='Header'>
-                <Col sm={24}>
-                    <h1>
-                        Fantasy Football 4.0
-                    </h1>
-                </Col>
-            </Row>
-
             <Row className='GameTitle'>
                 <Col sm={24}>
                     <h1>

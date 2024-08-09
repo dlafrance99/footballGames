@@ -9,6 +9,7 @@ import Footbordle23 from './Games/Footbordle23';
 import Footbordle24 from './Games/Footbordle24';
 import UpAndDownTheNFL from './Games/UpAndDownTheNFL';
 import NFLMatch23 from './Games/NFLMatch23'
+import NFLMatch24 from './Games/NFLMatch24'
 import FindThunder from './Games/FindThunder'
 import Leaderboard from './Games/Leaderboard'
 
@@ -28,11 +29,13 @@ const App = () => {
     }
   }
 
+  // MAKE IT SO THE GAME OVER WILL ALSO TELL THE TIME
+
   return (
     <Grid className='Wrapper'>
       <Row className='Header'>
         <Col sm={24}>
-          <h1>
+          <h1 style={{ textAlign: 'start', marginLeft: '20px' }}>
             Fantasy Football 5.0
           </h1>
         </Col>
@@ -98,6 +101,12 @@ const App = () => {
       {
         GameSelection === 'NFLMatch23' && (
           <NFLMatch23 />
+        )
+      }
+
+      {
+        GameSelection === 'NFLMatch24' && (
+          <NFLMatch24 />
         )
       }
 

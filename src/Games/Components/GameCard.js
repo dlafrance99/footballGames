@@ -5,14 +5,14 @@ import '../../App.css'
 
 const GameCard = ({ Title, availableDates }) => {
     //State------------------------------------------------------
-
+    let now = new Date()
 
     //Context----------------------------------------------------
 
 
     //Functions--------------------------------------------------
     const convertTitle = (value) => {
-        return value.replaceAll(' ','_')
+        return value.replaceAll(' ', '_')
     }
 
     const convertDates = (value) => {
@@ -36,21 +36,21 @@ const GameCard = ({ Title, availableDates }) => {
             {
                 availableDates
                     ?
-                    <h4 style={{ color: 'red', textAlign: 'center', marginTop: 0, marginBottom: '5px' }}>
-                        Available {convertDates(availableDates[0])} - {convertDates(availableDates[1])}
-                    </h4>
+                    <h4 style={{ color: (now > new Date(availableDates[0]) && now < new Date(availableDates[1])) ? 'green' : 'red', textAlign: 'center', marginTop: 0, marginBottom: '5px' }}>
+            {(now > new Date(availableDates[0]) && now < new Date(availableDates[1])) ? 'available' : `Available ${convertDates(availableDates[0])} - ${convertDates(availableDates[1])}`}
+        </h4 >
                     :
-                    <div style={{height: '19px', marginBottom: '5px'}}/>
+<div style={{ height: '19px', marginBottom: '5px' }} />
             }
-            <img
-                src={require(`../../Assets/GameCardImages/${convertTitle(Title)}.png`)}
-                alt='team logo'
-                style={{
-                    width: '100%',
-                    objectFit: 'contain',
-                    borderRadius: '10px',
-                }}
-            />
+<img
+    src={require(`../../Assets/GameCardImages/${convertTitle(Title)}.png`)}
+    alt='team logo'
+    style={{
+        width: '100%',
+        objectFit: 'contain',
+        borderRadius: '10px',
+    }}
+/>
         </>
     )
 }

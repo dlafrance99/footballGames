@@ -4,7 +4,7 @@ import { Grid, Row, Col, Input, Button, ButtonToolbar } from 'rsuite';
 import CheckIcon from '@rsuite/icons/Check';
 import CloseIcon from '@rsuite/icons/Close';
 
-import NFLPlayerList from '../NFLPlayerList';
+import NFLPlayerList24 from '../NFLPlayerList24';
 
 const Footbordle24 = () => {
     const [GameOver, setGameOver] = useState(false)
@@ -36,18 +36,18 @@ const Footbordle24 = () => {
     ])
 
     const getPlayer = () => {
-        let RandomNumber = Math.floor(Math.random() * NFLPlayerList.length)
+        let RandomNumber = Math.floor(Math.random() * NFLPlayerList24.length)
 
-        setChosenPlayer({ Rank: NFLPlayerList[RandomNumber].Rank, First: NFLPlayerList[RandomNumber].First.toUpperCase(), Last: NFLPlayerList[RandomNumber].Last.toUpperCase(), Position: NFLPlayerList[RandomNumber].Position.toUpperCase(), Team: NFLPlayerList[RandomNumber].Team.toUpperCase() })
+        setChosenPlayer({ Rank: NFLPlayerList24[RandomNumber].Rank, First: NFLPlayerList24[RandomNumber].First.toUpperCase(), Last: NFLPlayerList24[RandomNumber].Last.toUpperCase(), Position: NFLPlayerList24[RandomNumber].Position.toUpperCase(), Team: NFLPlayerList24[RandomNumber].Team.toUpperCase() })
     }
 
     useEffect(() => {
         handleReset()
 
-        let TENum = NFLPlayerList.filter((player) => player.Position === 'TE')
-        let RBNum = NFLPlayerList.filter((player) => player.Position === 'RB')
-        let WRNum = NFLPlayerList.filter((player) => player.Position === 'WR')
-        let QBNum = NFLPlayerList.filter((player) => player.Position === 'QB')        
+        let TENum = NFLPlayerList24.filter((player) => player.Position === 'TE')
+        let RBNum = NFLPlayerList24.filter((player) => player.Position === 'RB')
+        let WRNum = NFLPlayerList24.filter((player) => player.Position === 'WR')
+        let QBNum = NFLPlayerList24.filter((player) => player.Position === 'QB')        
     }, [])
 
     const handleGuess = () => {
@@ -177,18 +177,10 @@ const Footbordle24 = () => {
 
     return (
         <Grid className='Wrapper'>
-            <Row className='Header'>
-                <Col sm={24}>
-                    <h1>
-                        Fantasy Football 4.0
-                    </h1>
-                </Col>
-            </Row>
-
             <Row className='GameTitle'>
                 <Col sm={24}>
                     <h1>
-                        Fantasy Footbordle 23
+                        Fantasy Footbordle 24
                     </h1>
                 </Col>
             </Row>

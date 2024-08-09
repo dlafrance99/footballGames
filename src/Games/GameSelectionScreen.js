@@ -22,17 +22,9 @@ const GameSelectionScreen = ({ handleGameSelection }) => {
 
     return (
         <Grid>
-            <Row className='GameTitle'>
-                <Col sm={24}>
-                    <h1>
-                        Game Selection
-                    </h1>
-                </Col>
-            </Row>
-
             <Row style={{ marginTop: '10px' }}>
                 <h2>
-                    Upcoming Games
+                    2024 Games
                 </h2>
             </Row>
             <Row style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
@@ -55,21 +47,21 @@ const GameSelectionScreen = ({ handleGameSelection }) => {
                     />
                 </Col>
                 <Col
-                    style={{ width: '20%', marginLeft: '5px', marginRight: '5px', cursor: checkDate([new Date('August 1 2024'), new Date('August 29 2024')]) ? 'pointer' : 'not-allowed' }}
-                    onClick={checkDate([new Date('August 1 2024'), new Date('August 29 2024')]) ? () => handleGameSelection('Up And Down The NFL') : null}
+                    style={{ width: '20%', marginLeft: '5px', marginRight: '5px', cursor: checkDate([new Date('August 28 2024'), new Date('August 2 2024')]) ? 'pointer' : 'not-allowed' }}
+                    onClick={checkDate([new Date('August 28 2024'), new Date('August 29 2024')]) ? () => handleGameSelection('Up And Down The NFL') : null}
                 >
                     <GameCard
                         Title='Up And Down The NFL'
-                        availableDates={[new Date('August 1 2024'), new Date('August 29 2024')]}
+                        availableDates={[new Date('August 28 2024'), new Date('August 29 2024')]}
                     />
                 </Col>
                 <Col
-                    style={{ width: '20%', marginLeft: '5px', marginRight: '5px', cursor: checkDate([new Date('August 29 2024'), new Date('August 30 2024')]) ? 'pointer' : 'not-allowed' }}
-                    onClick={checkDate([new Date('August 29 2024'), new Date('August 30 2024')]) ? () => handleGameSelection('Coming Soon') : null}
+                    style={{ width: '20%', marginLeft: '5px', marginRight: '5px', cursor: checkDate([new Date('August 2 2024'), new Date('August 30 2024')]) ? 'pointer' : 'not-allowed' }}
+                    onClick={checkDate([new Date('August 2 2024'), new Date('August 30 2024')]) ? () => handleGameSelection('NFLMatch24') : null}
                 >
                     <GameCard
                         Title='NFLMatch24'
-                        availableDates={[new Date('August 29 2024'), new Date('August 30 2024')]}
+                        availableDates={[new Date('August 2 2024'), new Date('August 30 2024')]}
                     />
                 </Col>
                 <Col
@@ -86,10 +78,10 @@ const GameSelectionScreen = ({ handleGameSelection }) => {
 
             <Row style={{ marginTop: '10px' }}>
                 <h2>
-                    Archived Games
+                    2023 Games
                 </h2>
             </Row>
-            <Row style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+            <Row style={{ display: 'flex', justifyContent: 'center' }}>
                 <Col
                     style={{ width: '20%', marginLeft: '5px', marginRight: '5px', cursor: 'pointer' }}
                     onClick={() => handleGameSelection('Footbordle23')}
