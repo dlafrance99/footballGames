@@ -47,7 +47,7 @@ const GameSelectionScreen = ({ handleGameSelection }) => {
                     />
                 </Col>
                 <Col
-                    style={{ width: '20%', marginLeft: '5px', marginRight: '5px', cursor: checkDate([new Date('August 28 2024'), new Date('August 2 2024')]) ? 'pointer' : 'not-allowed' }}
+                    style={{ width: '20%', marginLeft: '5px', marginRight: '5px', cursor: checkDate([new Date('August 28 2024'), new Date('August 29 2024')]) ? 'pointer' : 'not-allowed' }}
                     onClick={checkDate([new Date('August 28 2024'), new Date('August 29 2024')]) ? () => handleGameSelection('Up And Down The NFL') : null}
                 >
                     <GameCard
@@ -56,12 +56,12 @@ const GameSelectionScreen = ({ handleGameSelection }) => {
                     />
                 </Col>
                 <Col
-                    style={{ width: '20%', marginLeft: '5px', marginRight: '5px', cursor: checkDate([new Date('August 2 2024'), new Date('August 30 2024')]) ? 'pointer' : 'not-allowed' }}
-                    onClick={checkDate([new Date('August 2 2024'), new Date('August 30 2024')]) ? () => handleGameSelection('NFLMatch24') : null}
+                    style={{ width: '20%', marginLeft: '5px', marginRight: '5px', cursor: checkDate([new Date('August 29 2024'), new Date('August 30 2024')]) ? 'pointer' : 'not-allowed' }}
+                    onClick={checkDate([new Date('August 29 2024'), new Date('August 30 2024')]) ? () => handleGameSelection('NFLMatch24') : null}
                 >
                     <GameCard
                         Title='NFLMatch24'
-                        availableDates={[new Date('August 2 2024'), new Date('August 30 2024')]}
+                        availableDates={[new Date('August 29 2024'), new Date('August 30 2024')]}
                     />
                 </Col>
                 <Col
