@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "/footballGames/static/css/main.ef4d1104.css",
-    "main.js": "/footballGames/static/js/main.c1d4f04c.js",
+    "main.css": "/footballGames/static/css/main.95b34ef6.css",
+    "main.js": "/footballGames/static/js/main.23bc0062.js",
     "static/js/787.e0bc491a.chunk.js": "/footballGames/static/js/787.e0bc491a.chunk.js",
+    "static/media/Up_And_Down_The_NFL.png": "/footballGames/static/media/Up_And_Down_The_NFL.82ef39b61e327933c71e.png",
     "static/media/Coming_Soon.png": "/footballGames/static/media/Coming_Soon.12a51272b76700e611f8.png",
     "static/media/NFLMatch24.png": "/footballGames/static/media/NFLMatch24.cfd2498145fa5b5da147.png",
     "static/media/NFLMatch23.png": "/footballGames/static/media/NFLMatch23.56772778a102db3c0dee.png",
@@ -41,13 +42,15 @@
     "static/media/FootballTeam.png": "/footballGames/static/media/FootballTeam.9d3cd6f03411feeba7c0.png",
     "static/media/Giants.png": "/footballGames/static/media/Giants.d18546036a6e823b88e4.png",
     "static/media/Rams.png": "/footballGames/static/media/Rams.004a62247b8e1c255944.png",
+    "static/media/AFC.png": "/footballGames/static/media/AFC.0611864d17ef047515c6.png",
+    "static/media/NFC.png": "/footballGames/static/media/NFC.3425393f2bcc7c05c0ea.png",
     "index.html": "/footballGames/index.html",
-    "main.ef4d1104.css.map": "/footballGames/static/css/main.ef4d1104.css.map",
-    "main.c1d4f04c.js.map": "/footballGames/static/js/main.c1d4f04c.js.map",
+    "main.95b34ef6.css.map": "/footballGames/static/css/main.95b34ef6.css.map",
+    "main.23bc0062.js.map": "/footballGames/static/js/main.23bc0062.js.map",
     "787.e0bc491a.chunk.js.map": "/footballGames/static/js/787.e0bc491a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ef4d1104.css",
-    "static/js/main.c1d4f04c.js"
+    "static/css/main.95b34ef6.css",
+    "static/js/main.23bc0062.js"
   ]
 }
