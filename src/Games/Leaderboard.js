@@ -31,6 +31,14 @@ const Leaderboard = () => {
             Name: 'Kyle LaCombe',
             Score: 0
         },
+        {
+            Name: 'Tyler Smith',
+            Score: 0
+        },
+        {
+            Name: 'Sabrina LaCombe',
+            Score: 0
+        },
     ])
 
     return (

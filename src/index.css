@@ -88,6 +88,16 @@ h4 {
   position: relative;
 }
 
+.FootballField {
+  text-align: center;
+  border: 2px solid white;
+  background-color: #136D15;
+  max-width: 95vw;
+  margin: auto;
+  height: 75vh;
+  position: relative;
+}
+
 .Guesses {
   text-align: center;
   margin: auto;

@@ -37,20 +37,20 @@ const GameCard = ({ Title, availableDates }) => {
                 availableDates
                     ?
                     <h4 style={{ color: (now > new Date(availableDates[0]) && now < new Date(availableDates[1])) ? 'green' : 'red', textAlign: 'center', marginTop: 0, marginBottom: '5px' }}>
-            {(now > new Date(availableDates[0]) && now < new Date(availableDates[1])) ? 'available' : `Available ${convertDates(availableDates[0])} - ${convertDates(availableDates[1])}`}
-        </h4 >
+                        {(now > new Date(availableDates[0]) && now < new Date(availableDates[1])) ? 'available' : `Available ${convertDates(availableDates[0])} - ${convertDates(availableDates[1])}`}
+                    </h4 >
                     :
-<div style={{ height: '19px', marginBottom: '5px' }} />
+                    <div style={{ height: '19px', marginBottom: '5px' }} />
             }
-<img
-    src={require(`../../Assets/GameCardImages/${convertTitle(Title)}.png`)}
-    alt='team logo'
-    style={{
-        width: '100%',
-        objectFit: 'contain',
-        borderRadius: '10px',
-    }}
-/>
+            <img
+                src={require(`../../Assets/GameCardImages/${convertTitle(Title)}.png`)}
+                alt='team logo'
+                style={{
+                    width: '100%',
+                    objectFit: 'contain',
+                    borderRadius: '10px',
+                }}
+            />
         </>
     )
 }

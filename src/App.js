@@ -12,6 +12,7 @@ import NFLMatch23 from './Games/NFLMatch23'
 import NFLMatch24 from './Games/NFLMatch24'
 import FindThunder from './Games/FindThunder'
 import Leaderboard from './Games/Leaderboard'
+import HorseRace from './Games/HorseRace'
 
 const App = () => {
   const [LoggedIn, setLoggedIn] = useState(false)
@@ -113,6 +114,12 @@ const App = () => {
       {
         GameSelection === 'Footbordle23' && (
           <Footbordle23 />
+        )
+      }
+
+      {
+        GameSelection === 'Horse Race' && (
+          <HorseRace />
         )
       }
       {/* {
