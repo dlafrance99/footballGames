@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/footballGames/static/css/main.ccbc7ea5.css",
-    "main.js": "/footballGames/static/js/main.4fc6bba8.js",
+    "main.js": "/footballGames/static/js/main.53a0e367.js",
     "static/js/787.e0bc491a.chunk.js": "/footballGames/static/js/787.e0bc491a.chunk.js",
     "static/media/Up_And_Down_The_NFL.png": "/footballGames/static/media/Up_And_Down_The_NFL.82ef39b61e327933c71e.png",
     "static/media/Horse_Race.png": "/footballGames/static/media/Horse_Race.ca8d53ec5b722e11522f.png",
@@ -47,11 +47,11 @@
     "static/media/NFC.png": "/footballGames/static/media/NFC.3425393f2bcc7c05c0ea.png",
     "index.html": "/footballGames/index.html",
     "main.ccbc7ea5.css.map": "/footballGames/static/css/main.ccbc7ea5.css.map",
-    "main.4fc6bba8.js.map": "/footballGames/static/js/main.4fc6bba8.js.map",
+    "main.53a0e367.js.map": "/footballGames/static/js/main.53a0e367.js.map",
     "787.e0bc491a.chunk.js.map": "/footballGames/static/js/787.e0bc491a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ccbc7ea5.css",
-    "static/js/main.4fc6bba8.js"
+    "static/js/main.53a0e367.js"
   ]
 }
