@@ -5,90 +5,23 @@ import CheckIcon from '@rsuite/icons/Check';
 import CloseIcon from '@rsuite/icons/Close';
 import NFLTeamList from '../NFLTeamList';
 
+import ManagerScore from '../ManagerScores';
+
 const HorseRace = () => {
     const [GameStarted, setGameStarted] = useState(false)
     const [GameOver, setGameOver] = useState(false)
     const [GameStartTime, setGameStartTime] = useState(null)
     const [GameOverTime, setGameOverTime] = useState(null)
 
-    const [Rounds, setRounds] = useState(10)
-    const [CurrentRound, setCurrentRound] = useState(1)
-
-    const parentRef = useRef(null)
-
-    const getRandomNum = (min, max) => {
-        return Math.random() * (max - min) + min;
-    }
-
-    const handleRestart = () => {
-        setGameOver(false)
-        setGameStartTime(null)
-        setGameOverTime(null)
-        setGameStarted(false)
-        setCurrentRound(1)
-    }
-
-    const handleStartGame = () => {
-        setGameStarted(true)
-        setGameStartTime(new Date())
-    }
-
-    const handleEndGame = () => {
-        setGameOver(true)
-        setGameOverTime(new Date())
-    }
-
-    const handleCorrectAnswer = () => {
-        setCurrentRound(CurrentRound + 1)
-        if (CurrentRound + 1 === Rounds) {
-            handleEndGame()
+    const Managers = ManagerScore.sort((a, b) => {
+        if (a.Score === b.Score) {
+            return a.Name.localeCompare(b.Name);
         }
-    }
-
-    const handleIncorrectAnswer = () => {
-        setCurrentRound(1)
-    }
-
-    const handleTeamSelection = (Team) => {
-        if (Team === 'Broncos') {
-            handleCorrectAnswer()
-        } else {
-            handleIncorrectAnswer()
-        }
-    }
-
-    const showRandomTeams = () => {
-        return (
-            <>
-                {
-                    NFLTeamList.map((Team) => {
-                        let imgHeight = getRandomNum(10, 40)
-                        return (
-                            <>
-                                <img
-                                    src={require(`../Assets/TeamImages/${Team.Logo}`)}
-                                    alt='team logo'
-                                    onClick={() => handleTeamSelection(Team.Team)}
-                                    style={{
-                                        position: 'absolute',
-                                        height: `${imgHeight}%`,
-                                        objectFit: 'contain',
-                                        top: `${getRandomNum(0, (100 - imgHeight))}%`,
-                                        left: `${getRandomNum(0, 85)}%`,
-                                        zIndex: Team.Team === 'Broncos' ? 1 : 0,
-                                        cursor: 'pointer'
-                                    }}
-                                />
-                            </>
-                        )
-                    })
-                }
-            </>
-        )
-    }
+        return b.Score - a.Score;
+    })
 
     return (
-        <Grid>            
+        <Grid>
             <Row className='GameTitle'>
                 <Col sm={24}>
                     <h1>
@@ -101,7 +34,7 @@ const HorseRace = () => {
                 GameOver
                     ?
                     <>
-                        <Row className='GameTitle'>
+                        {/* <Row className='GameTitle'>
                             <Col sm={24}>
                                 <h1>
                                     Game Over
@@ -128,7 +61,7 @@ const HorseRace = () => {
 
                         <Row>
 
-                        </Row>
+                        </Row> */}
                     </>
                     :
                     <>
@@ -138,34 +71,126 @@ const HorseRace = () => {
                                     Off to the races! Players will select a horse (NFL team) to bet on. You can bet as many points as you've earned so far, but beware, you could lose them all.
                                 </div>
                                 <div className='GameRulesFont'>
-                                    The horse race is random. whichever horse crosses the finish line first, doubles their bet. If your horse loses, you lose all your points. 
+                                    The horse race is random. whichever horse crosses the finish line first, doubles their bet. If your horse loses, you lose all your points.
                                 </div>
                             </Col>
                         </Row>
 
-                        <Row>
-                            <Col ref={parentRef} sm={24} className='FootballField'>
-                                {
-                                    GameStarted
-                                        ?
-                                        <>
-                                            {showRandomTeams()}
-                                        </>
-                                        :
-                                        <>
-                                            <ButtonToolbar style={{ width: '50%', margin: 'auto', marginTop: '15px', height: '100%', alignContent: 'center' }}>
-                                                <Button
-                                                    style={{ fontSize: '25px', padding: '10px 15px 10px 15px', backgroundColor: 'transparent', border: '2px solid green', color: 'green', borderRadius: '5px', cursor: 'pointer' }}
-                                                    onClick={() => handleStartGame()}
-                                                >
-                                                    Start
-                                                </Button>
-                                            </ButtonToolbar>
-                                        </>
-                                }
+                        {
+                            GameStarted
+                                ?
 
-                            </Col>
-                        </Row>
+                                <Row>
+                                    <Col sm={24} className='FootballField' style={{ display: 'flex' }}>
+                                        <div style={{ flex: 1, borderLeft: '2px solid white', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', color: 'white', fontSize: '30px', fontWeight: 'bolder' }}>
+                                            <div style={{ marginTop: '75px', marginLeft: '5px', transform: 'rotate(180deg)', paddingTop: '200%' }}>
+                                                6
+                                            </div>
+                                            <div style={{ marginTop: '75px', marginRight: '5px', transform: 'rotate(180deg)', paddingTop: '200%' }}>
+                                                0
+                                            </div>
+                                        </div>
+
+                                        <div style={{ flex: 1, borderLeft: '2px solid white', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', color: 'white', fontSize: '30px', fontWeight: 'bolder' }}>
+                                            <div style={{ marginTop: '75px', marginLeft: '5px', transform: 'rotate(180deg)', paddingTop: '200%' }}>
+                                                5
+                                            </div>
+                                            <div style={{ marginTop: '75px', marginRight: '5px', transform: 'rotate(180deg)', paddingTop: '200%' }}>
+                                                0
+                                            </div>
+                                        </div>
+
+                                        <div style={{ flex: 1, borderLeft: '2px solid white', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', color: 'white', fontSize: '30px', fontWeight: 'bolder' }}>
+                                            <div style={{ marginTop: '75px', marginLeft: '5px', transform: 'rotate(180deg)', paddingTop: '200%' }}>
+                                                4
+                                            </div>
+                                            <div style={{ marginTop: '75px', marginRight: '5px', transform: 'rotate(180deg)', paddingTop: '200%' }}>
+                                                0
+                                            </div>
+                                        </div>
+
+                                        <div style={{ flex: 1, borderLeft: '2px solid white', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', color: 'white', fontSize: '30px', fontWeight: 'bolder' }}>
+                                            <div style={{ marginTop: '75px', marginLeft: '5px', transform: 'rotate(180deg)', paddingTop: '200%' }}>
+                                                3
+                                            </div>
+                                            <div style={{ marginTop: '75px', marginRight: '5px', transform: 'rotate(180deg)', paddingTop: '200%' }}>
+                                                0
+                                            </div>
+                                        </div>
+
+                                        <div style={{ flex: 1, borderLeft: '2px solid white', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', color: 'white', fontSize: '30px', fontWeight: 'bolder' }}>
+                                            <div style={{ marginTop: '75px', marginLeft: '5px', transform: 'rotate(180deg)', paddingTop: '200%' }}>
+                                                2
+                                            </div>
+                                            <div style={{ marginTop: '75px', marginRight: '5px', transform: 'rotate(180deg)', paddingTop: '200%' }}>
+                                                0
+                                            </div>
+                                        </div>
+
+                                        <div style={{ flex: 1, borderLeft: '2px solid white', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', color: 'white', fontSize: '30px', fontWeight: 'bolder' }}>
+                                            <div style={{ marginTop: '75px', marginLeft: '5px', transform: 'rotate(180deg)', paddingTop: '200%' }}>
+                                                1
+                                            </div>
+                                            <div style={{ marginTop: '75px', marginRight: '5px', transform: 'rotate(180deg)', paddingTop: '200%' }}>
+
+                                            </div>
+                                        </div>
+
+                                        <div style={{ flex: 1, borderLeft: '2px solid white', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', color: 'white', fontSize: '50px', fontWeight: 'bolder', backgroundColor: '#002244' }}>
+                                            <div style={{ marginTop: '75px', marginLeft: '5px', transform: 'rotate(90deg)', paddingTop: '100%', color: '#FB4F14' }}>
+                                                Broncos
+                                            </div>
+
+                                        </div>
+                                    </Col>
+                                </Row>
+                                :
+                                <Row>
+                                    <Col sm={24} style={{ display: 'flex', marginRight: '30px', marginLeft: '30px' }}>
+                                        <div style={{ flex: 1, display: 'flex', color: 'white', fontSize: '30px', fontWeight: 'bolder', paddingTop: '140px' }}>
+                                            <div style={{ margin: 'auto' }}>
+                                                {Managers[7].Name.split(' ')[0]}
+                                            </div>
+                                        </div>
+                                        <div style={{ flex: 1, display: 'flex', color: 'white', fontSize: '30px', fontWeight: 'bolder', paddingTop: '100px' }}>
+                                            <div style={{ margin: 'auto' }}>
+                                                {Managers[5].Name.split(' ')[0]}
+                                            </div>
+                                        </div>
+                                        <div style={{ flex: 1, display: 'flex', color: 'white', fontSize: '30px', fontWeight: 'bolder', paddingTop: '60px' }}>
+                                            <div style={{ margin: 'auto' }}>
+                                                {Managers[3].Name.split(' ')[0]}
+                                            </div>
+                                        </div>
+                                        <div style={{ flex: 1, display: 'flex', color: 'white', fontSize: '30px', fontWeight: 'bolder', paddingTop: '20px' }}>
+                                            <div style={{ margin: 'auto' }}>
+                                                {Managers[1].Name.split(' ')[0]}
+                                            </div>
+                                        </div>
+                                        <div style={{ flex: 1, display: 'flex', color: 'white', fontSize: '30px', fontWeight: 'bolder' }}>
+                                            <div style={{ margin: 'auto' }}>
+                                                {Managers[0].Name.split(' ')[0]}
+                                            </div>
+                                        </div>
+                                        <div style={{ flex: 1, display: 'flex', color: 'white', fontSize: '30px', fontWeight: 'bolder', paddingTop: '40px' }}>
+                                            <div style={{ margin: 'auto' }}>
+                                                {Managers[2].Name.split(' ')[0]}
+                                            </div>
+                                        </div>
+                                        <div style={{ flex: 1, display: 'flex', color: 'white', fontSize: '30px', fontWeight: 'bolder', paddingTop: '80px' }}>
+                                            <div style={{ margin: 'auto' }}>
+                                                {Managers[4].Name.split(' ')[0]}
+                                            </div>
+                                        </div>
+                                        <div style={{ flex: 1, display: 'flex', color: 'white', fontSize: '30px', fontWeight: 'bolder', paddingTop: '120px' }}>
+                                            <div style={{ margin: 'auto' }}>
+                                                {Managers[6].Name.split(' ')[0]}
+                                            </div>
+                                        </div>
+                                    </Col>
+                                </Row>
+                        }
+
                     </>
             }
         </Grid>

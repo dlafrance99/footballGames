@@ -20,6 +20,7 @@ const App = () => {
   const [ErrorMessage, setErrorMessage] = useState('')
 
   const [GameSelection, setGameSelection] = useState('Game Selection')
+  // const [GameSelection, setGameSelection] = useState('Horse Race')
   const [NavHover, setNavHover] = useState('')
 
   const handlePassword = () => {

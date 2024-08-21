@@ -5,41 +5,10 @@ import CheckIcon from '@rsuite/icons/Check';
 import CloseIcon from '@rsuite/icons/Close';
 import NFLTeamList from '../NFLTeamList';
 
+import ManagerScore from '../ManagerScores';
+
 const Leaderboard = () => {
-    const [Leaderboard, setLeaderboard] = useState([
-        {
-            Name: 'Devon LaFrance',
-            Score: 0
-        },
-        {
-            Name: 'Katie Schmidt',
-            Score: 1
-        },
-        {
-            Name: 'Räley Gonzalez',
-            Score: 0
-        },
-        {
-            Name: 'Jesse Ireland',
-            Score: 0
-        },
-        {
-            Name: 'Nick LaCombe',
-            Score: -1
-        },
-        {
-            Name: 'Kyle LaCombe',
-            Score: 0
-        },
-        {
-            Name: 'Tyler Smith',
-            Score: 0
-        },
-        {
-            Name: 'Sabrina LaCombe',
-            Score: 0
-        },
-    ])
+    const Leaderboard = ManagerScore
 
     return (
         <Grid>
