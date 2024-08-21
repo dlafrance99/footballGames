@@ -9,7 +9,7 @@ const ManagerScore = [
     },
     {
         Name: 'Räley Gonzalez',
-        Score: 0
+        Score: 2
     },
     {
         Name: 'Jesse Ireland',
@@ -25,7 +25,7 @@ const ManagerScore = [
     },
     {
         Name: 'Tyler Smith',
-        Score: 0
+        Score: 1
     },
     {
         Name: 'Sabrina LaCombe',
