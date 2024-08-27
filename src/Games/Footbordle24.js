@@ -8,7 +8,10 @@ import NFLPlayerList24 from '../NFLPlayerList24';
 
 const Footbordle24 = () => {
     const [GameOver, setGameOver] = useState(false)
-    const [GameOverTime, setGameOverTime] = useState(false)
+    const [GameStarted, setGameStarted] = useState(false)
+
+    const [GameStartTime, setGameStartTime] = useState(null)
+    const [GameOverTime, setGameOverTime] = useState(null)
 
     const [ChosenPlayer, setChosenPlayer] = useState({ Rank: 0, First: ``, Last: ``, Position: ``, Team: `` })
     const [CurrentGuess, setCurrentGuess] = useState('')
@@ -47,8 +50,13 @@ const Footbordle24 = () => {
         let TENum = NFLPlayerList24.filter((player) => player.Position === 'TE')
         let RBNum = NFLPlayerList24.filter((player) => player.Position === 'RB')
         let WRNum = NFLPlayerList24.filter((player) => player.Position === 'WR')
-        let QBNum = NFLPlayerList24.filter((player) => player.Position === 'QB')        
+        let QBNum = NFLPlayerList24.filter((player) => player.Position === 'QB')
     }, [])
+
+    const handleStartGame = () => {
+        setGameStarted(true)
+        setGameStartTime(new Date())
+    }
 
     const handleGuess = () => {
         if (CurrentGuess.length !== ChosenPlayer.Last.length) {
@@ -112,9 +120,7 @@ const Footbordle24 = () => {
     }
 
     const handleGameOver = () => {
-        let GameTime = new Date()
-        GameTime = `${GameTime.getMonth()}/${GameTime.getDate()}/${GameTime.getFullYear()} ${GameTime.getHours() > 12 ? GameTime.getHours() - 12 : GameTime.getHours()}:${(GameTime.getMinutes() < 10 ? '0' : '') + GameTime.getMinutes()}:${(GameTime.getSeconds() < 10 ? '0' : '') + GameTime.getSeconds()}:${GameTime.getMilliseconds()} ${GameTime.getHours() > 12 ? 'PM' : 'AM'}`
-        setGameOverTime(GameTime)
+        setGameOverTime(new Date())
         setGameOver(true)
     }
 
@@ -142,6 +148,14 @@ const Footbordle24 = () => {
 
         ])
     }
+
+    const convertMilliseconds = (ms) => {
+        const minutes = Math.floor(ms / 60000);
+        const seconds = Math.floor((ms % 60000) / 1000);
+        const milliseconds = ms % 1000;
+
+        return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${String(milliseconds).padStart(3, '0')}`;
+    };
 
     const determineStyle = (guess, index) => {
         let ChosenPlayerLastNameArray = ChosenPlayer.Last.split('')
@@ -200,7 +214,7 @@ const Footbordle24 = () => {
                         <Row className='GameTitle'>
                             <Col sm={24}>
                                 <h2>
-                                    {GameOverTime}
+                                    {convertMilliseconds(GameOverTime - GameStartTime)}
                                 </h2>
                             </Col>
                         </Row>
@@ -229,88 +243,108 @@ const Footbordle24 = () => {
                         <Row className='GameRules'>
                             <Col sm={24}>
                                 <div className='GameRulesFont'>
-                                    Essentially it's wordle, You have to get three right. They are all NFL top 100 Fantasy Football Players
+                                    Essentially it's wordle, You have to get three right. They are all NFL top 100 Fantasy Football Players.
+                                </div>
+                                <div className='GameRulesFont'>
+                                    You can only submit if you have the right number of letters.
                                 </div>
                             </Col>
                         </Row>
 
-                        {showGuesses()}
+                        {
+                            GameStarted
+                                ?
+                                <>
+                                    {showGuesses()}
 
-                        <Row >
-                            <Col sm={24} style={{ width: '50%', margin: 'auto', marginBottom: '5px', marginTop: '10px' }}>
-                                <label style={{ color: 'white', textAlign: 'left' }}>
-                                    Guess
-                                </label>
-                            </Col>
-                            <Col sm={24} className='Guesses'>
-                                <Input
-                                    style={{ color: 'black', width: '50%', backgroundColor: 'white', border: '1px solid white', fontSize: '50px' }}
-                                    maxLength={ChosenPlayer.Last.length}
-                                    minLength={ChosenPlayer.Last.length}
-                                    onPressEnter={() => handleGuess()}
-                                    value={CurrentGuess}
-                                    onChange={(value) => setCurrentGuess(value.toUpperCase())}
-                                />
+                                    <Row >
+                                        <Col sm={24} style={{ width: '50%', margin: 'auto', marginBottom: '5px', marginTop: '10px' }}>
+                                            <label style={{ color: 'white', textAlign: 'left' }}>
+                                                Guess
+                                            </label>
+                                        </Col>
+                                        <Col sm={24} className='Guesses'>
+                                            <Input
+                                                style={{ color: 'black', width: '50%', backgroundColor: 'white', border: '1px solid white', fontSize: '50px' }}
+                                                maxLength={ChosenPlayer.Last.length}
+                                                minLength={ChosenPlayer.Last.length}
+                                                onPressEnter={() => handleGuess()}
+                                                value={CurrentGuess}
+                                                onChange={(value) => setCurrentGuess(value.toUpperCase())}
+                                            />
 
-                                {
-                                    Guesses[3].last !== ''
-                                        ?
-                                        <>
-                                            <Row>
-                                                <Col>
-                                                    <h1 style={{ color: 'white' }}>
-                                                        Hints:
-                                                    </h1>
-                                                </Col>
-                                            </Row>
-                                            <Row>
-                                                <Col>
-                                                    <h1 style={{ color: 'white' }}>
-                                                        Position: {ChosenPlayer.Position}
-                                                    </h1>
-                                                </Col>
-                                            </Row>
-                                        </>
-                                        :
-                                        null
-                                }
+                                            {
+                                                Guesses[3].last !== ''
+                                                    ?
+                                                    <>
+                                                        <Row>
+                                                            <Col>
+                                                                <h1 style={{ color: 'white' }}>
+                                                                    Hints:
+                                                                </h1>
+                                                            </Col>
+                                                        </Row>
+                                                        <Row>
+                                                            <Col>
+                                                                <h1 style={{ color: 'white' }}>
+                                                                    Position: {ChosenPlayer.Position}
+                                                                </h1>
+                                                            </Col>
+                                                        </Row>
+                                                    </>
+                                                    :
+                                                    null
+                                            }
 
-                                {
-                                    Guesses[4].last !== ''
-                                        ?
-                                        <>
-                                            <Row>
-                                                <Col>
-                                                    <h1 style={{ color: 'white' }}>
-                                                        Position: {ChosenPlayer.Team}
-                                                    </h1>
-                                                </Col>
-                                            </Row>
-                                        </>
-                                        :
-                                        null
-                                }
+                                            {
+                                                Guesses[4].last !== ''
+                                                    ?
+                                                    <>
+                                                        <Row>
+                                                            <Col>
+                                                                <h1 style={{ color: 'white' }}>
+                                                                    Position: {ChosenPlayer.Team}
+                                                                </h1>
+                                                            </Col>
+                                                        </Row>
+                                                    </>
+                                                    :
+                                                    null
+                                            }
 
-                                <ButtonToolbar style={{ width: '50%', margin: 'auto', marginTop: '15px' }}>
+                                            <ButtonToolbar style={{ width: '50%', margin: 'auto', marginTop: '15px' }}>
+                                                <Button
+                                                    style={{ fontSize: '25px', padding: '10px 15px 10px 15px', backgroundColor: 'transparent', border: '2px solid green', color: 'green', borderRadius: '5px' }}
+                                                    onClick={() => handleGuess()}
+                                                >
+                                                    Enter
+                                                </Button>
+                                            </ButtonToolbar>
+                                        </Col>
+                                    </Row>
+
+                                    <Row>
+                                        <Col sm={24} style={{ textAlign: 'center', fontSize: '5em' }}>
+                                            {Results.map(Result => (
+                                                <>
+                                                    {Result.Result === 'Wrong' ? <CloseIcon color='red' /> : <CheckIcon color='green' />}
+                                                </>
+                                            ))}
+                                        </Col>
+                                    </Row>
+                                </>
+                                :
+                                <ButtonToolbar style={{ width: '100%', textAlign: 'center', margin: 'auto', marginTop: '15px', height: '100%', alignContent: 'center' }}>
                                     <Button
-                                        style={{ fontSize: '25px', padding: '10px 15px 10px 15px', backgroundColor: 'transparent', border: '2px solid green', color: 'green', borderRadius: '5px' }}
-                                        onClick={() => handleGuess()}
+                                        style={{ fontSize: '25px', padding: '10px 15px 10px 15px', backgroundColor: 'transparent', border: '2px solid green', color: 'green', borderRadius: '5px', cursor: 'pointer' }}
+                                        onClick={() => handleStartGame()}
                                     >
-                                        Enter
+                                        Start
                                     </Button>
                                 </ButtonToolbar>
-                            </Col>
-                        </Row>
+                        }
 
-                        <Row>
-                            <Col sm={24} style={{ textAlign: 'center', fontSize: '5em' }}>
-                                {Results.map(Result => (
-                                    <>
-                                        {Result.Result === 'Wrong' ? <CloseIcon color='red' /> : <CheckIcon color='green' />}
-                                    </>
-                                ))}
-                            </Col>
-                        </Row>
+
                     </>
             }
         </Grid>
