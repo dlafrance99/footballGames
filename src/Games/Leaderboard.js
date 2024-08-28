@@ -5,10 +5,14 @@ import CheckIcon from '@rsuite/icons/Check';
 import CloseIcon from '@rsuite/icons/Close';
 import NFLTeamList from '../NFLTeamList';
 
+import GameCard from './Components/GameCard';
+
 import ManagerScore from '../ManagerScores';
 
 const Leaderboard = () => {
     const Leaderboard = ManagerScore
+
+    const [SelectedGame, setSelectedGame] = useState('')
 
     return (
         <Grid>
@@ -20,7 +24,7 @@ const Leaderboard = () => {
                 </Col>
             </Row>
 
-            <Row style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+            <Row style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
 
                 <div style={{ width: '25%' }}>
                     {
@@ -55,10 +59,217 @@ const Leaderboard = () => {
                                 )
                             })
                     }
+
+
                 </div>
             </Row>
+            <Row style={{ marginTop: '10px' }}>
+                <h2 style={{ textDecorationLine: 'underline' }}>
+                    Scores
+                </h2>
+            </Row>
+            <Row style={{ display: 'flex', justifyContent: 'center' }}>
+                <Col
+                    style={{ width: '10%', marginLeft: '5px', marginRight: '5px', cursor: 'pointer' }}
+                    onClick={() => setSelectedGame('Money Money')}
+                >
+                    <GameCard
+                        Title='Money Money'
 
-        </Grid>
+                    />
+                </Col>
+                <Col
+                    style={{ width: '10%', marginLeft: '5px', marginRight: '5px', cursor: 'pointer' }}
+                    onClick={() => setSelectedGame('Wheres Thunder')}
+                >
+                    <GameCard
+                        Title='Wheres Thunder'
+
+                    />
+                </Col>
+                <Col
+                    style={{ width: '10%', marginLeft: '5px', marginRight: '5px', cursor: 'pointer' }}
+                    onClick={() => setSelectedGame('Miscellaneous')}
+                >
+                    <GameCard
+                        Title='Miscellaneous'
+
+                    />
+                </Col>
+
+                {/* <Col
+                    style={{ width: '10%', marginLeft: '5px', marginRight: '5px', cursor: 'pointer' }}
+                    onClick={() => console.log('hit this')}
+                >
+                    <GameCard
+                        Title='Footbordle24'
+
+                    />
+                </Col>
+
+
+                <Col
+                    style={{ width: '10%', marginLeft: '5px', marginRight: '5px', cursor: 'pointer' }}
+                    onClick={() => console.log('hit this')}
+                >
+                    <GameCard
+                        Title='Up And Down The NFL'
+
+                    />
+                </Col>
+
+                <Col
+                    style={{ width: '10%', marginLeft: '5px', marginRight: '5px', cursor: 'pointer' }}
+                    onClick={() => console.log('hit this')}
+                >
+                    <GameCard
+                        Title='NFLMatch24'
+
+                    />
+                </Col>
+
+                <Col
+                    style={{ width: '10%', marginLeft: '5px', marginRight: '5px', cursor: 'pointer' }}
+                    onClick={() => console.log('hit this')}
+                >
+                    <GameCard
+                        Title='Horse Race'
+                    />
+                </Col> */}
+            </Row >
+
+            {
+                SelectedGame !== '' && (
+                    <>
+                        <h3>
+                            {SelectedGame}
+                        </h3>
+                        <Row style={{ display: 'flex', justifyContent: 'center', marginTop: '10px', marginBottom: '10vh' }}>
+                            <div style={{ width: '25%' }}>
+                                <div style={{ display: 'flex', flexDirection: 'row', borderBottom: '1px solid white', paddingBottom: '5px', paddingTop: '5px' }}>
+                                    <h3 style={{ flex: 1 }}>
+                                        Rank
+                                    </h3>
+                                    <h3 style={{ flex: 3 }}>
+                                        Name
+                                    </h3>
+                                    <h3 style={{ flex: 1 }}>
+                                        Score
+                                    </h3>
+                                    <h3 style={{ flex: 1 }}>
+                                        Points
+                                    </h3>
+                                </div>
+                                {
+                                    Leaderboard
+                                        .sort((a, b) => {
+                                            if (SelectedGame === 'Money Money') {
+                                                if (a.MoneyMoney === b.MoneyMoney) {
+                                                    return a.Name.localeCompare(b.Name);
+                                                }
+                                                return a.MoneyMoney - b.MoneyMoney;
+                                            }
+                                            else if (SelectedGame === 'Wheres Thunder') {
+                                                if (a.FindThunderTime === b.FindThunderTime) {
+                                                    return a.Name.localeCompare(b.Name);
+                                                }
+                                                return a.FindThunderTime - b.FindThunderTime;
+                                            }
+                                            else if (SelectedGame === 'Miscellaneous') {
+                                                if (a.Miscellaneous === b.Miscellaneous) {
+                                                    return a.Name.localeCompare(b.Name);
+                                                }
+                                                return b.Miscellaneous - a.Miscellaneous;
+                                            }
+                                        })
+                                        .map((Leader, i, sortedArray) => {
+                                            let rank = 1;
+                                            if (SelectedGame === 'Money Money') {
+                                                if (i > 0 && sortedArray[i].MoneyMoney === sortedArray[i - 1].MoneyMoney) {
+                                                    rank = sortedArray[i - 1].rank;
+                                                } else if (i > 0) {
+                                                    rank = sortedArray[i - 1].rank + 1;
+                                                }
+                                                sortedArray[i].rank = rank;
+                                            }
+                                            else if (SelectedGame === 'Wheres Thunder') {
+                                                if (i > 0 && sortedArray[i].FindThunderTime === sortedArray[i - 1].FindThunderTime) {
+                                                    rank = sortedArray[i - 1].rank;
+                                                } else if (i > 0) {
+                                                    rank = sortedArray[i - 1].rank + 1;
+                                                }
+                                                sortedArray[i].rank = rank;
+                                            }
+                                            else if (SelectedGame === 'Miscellaneous') {
+                                                if (i > 0 && sortedArray[i].Miscellaneous === sortedArray[i - 1].Miscellaneous) {
+                                                    rank = sortedArray[i - 1].rank;
+                                                } else if (i > 0) {
+                                                    rank = sortedArray[i - 1].rank + 1;
+                                                }
+                                                sortedArray[i].rank = rank;
+                                            }
+
+                                            const showScore = () => {
+                                                if (SelectedGame === 'Money Money') {
+                                                    return Leader.MoneyMoney
+                                                }
+                                                else if (SelectedGame === 'Wheres Thunder') {
+                                                    return Leader.FindThunderTime
+                                                }
+                                                else if (SelectedGame === 'Miscellaneous') {
+                                                    return Leader.Miscellaneous
+                                                }
+                                            }
+
+                                            const showPoints = () => {
+                                                if (SelectedGame === 'Miscellaneous') {
+                                                    return Leader.Miscellaneous
+                                                }
+                                                if (showScore() === 0) {
+                                                    return 0
+                                                }
+                                                if (i === 0) {
+                                                    return 8
+                                                } else if (i === 1) {
+                                                    return 7
+                                                } else if (i === 2) {
+                                                    return 6
+                                                } else if (i === 3) {
+                                                    return 5
+                                                } else if (i === 4) {
+                                                    return 4
+                                                } else if (i === 5) {
+                                                    return 3
+                                                } else if (i === 6) {
+                                                    return 2
+                                                } else if (i === 7) {
+                                                    return 1
+                                                }
+                                            }
+                                            return (
+                                                <div style={{ display: 'flex', flexDirection: 'row', borderBottom: '1px solid white', paddingBottom: '5px', paddingTop: '5px' }}>
+                                                    <h3 style={{ flex: 1 }}>
+                                                        {rank}
+                                                    </h3>
+                                                    <h3 style={{ flex: 3 }}>
+                                                        {Leader.Name}
+                                                    </h3>
+                                                    <h3 style={{ flex: 1 }}>
+                                                        {showScore()}
+                                                    </h3>
+                                                    <h3 style={{ flex: 1 }}>
+                                                        {showPoints()}
+                                                    </h3>
+                                                </div>
+                                            )
+                                        })
+                                }
+                            </div>
+                        </Row>
+                    </>
+                )
+            }
+        </Grid >
     )
 };
 

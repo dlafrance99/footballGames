@@ -58,6 +58,17 @@ const Footbordle24 = () => {
         setGameStartTime(new Date())
     }
 
+    const handleRestart = ()=>{
+        setGameOver(false)
+        setGameStarted(false)
+        setGameStartTime(null)
+        setGameOverTime(null)
+        setCurrentGuess('')
+        setChosenPlayer({ Rank: 0, First: ``, Last: ``, Position: ``, Team: `` })
+        setResults([])
+        handleReset()
+    }
+
     const handleGuess = () => {
         if (CurrentGuess.length !== ChosenPlayer.Last.length) {
             return null
@@ -218,6 +229,15 @@ const Footbordle24 = () => {
                                 </h2>
                             </Col>
                         </Row>
+
+                        <ButtonToolbar style={{ width: '50%', margin: 'auto', marginTop: '15px', height: '100%', alignContent: 'center', textAlign: 'center' }}>
+                            <Button
+                                style={{ fontSize: '25px', padding: '10px 15px 10px 15px', backgroundColor: 'transparent', border: '2px solid green', color: 'green', borderRadius: '5px', cursor: 'pointer' }}
+                                onClick={() => handleRestart()}
+                            >
+                                Restart
+                            </Button>
+                        </ButtonToolbar>
 
                         <Row>
                             {Results.map(Result => (
