@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/footballGames/static/css/main.ccbc7ea5.css",
-    "main.js": "/footballGames/static/js/main.13321740.js",
+    "main.css": "/footballGames/static/css/main.ccc56eef.css",
+    "main.js": "/footballGames/static/js/main.0bdf493b.js",
     "static/js/787.e0bc491a.chunk.js": "/footballGames/static/js/787.e0bc491a.chunk.js",
     "static/media/Up_And_Down_The_NFL.png": "/footballGames/static/media/Up_And_Down_The_NFL.82ef39b61e327933c71e.png",
     "static/media/Horse_Race.png": "/footballGames/static/media/Horse_Race.ca8d53ec5b722e11522f.png",
@@ -19,6 +19,7 @@
     "static/media/Ravens.png": "/footballGames/static/media/Ravens.8dcfc6c70a6ad79ec020.png",
     "static/media/Lions.png": "/footballGames/static/media/Lions.a45b06db6d7e5c52c527.png",
     "static/media/Falcons.png": "/footballGames/static/media/Falcons.1efde1862b8ab51a65e5.png",
+    "static/media/Miscellaneous.png": "/footballGames/static/media/Miscellaneous.7fcc44ce6521e34f5026.png",
     "static/media/Raiders.png": "/footballGames/static/media/Raiders.aadb0bfb0da319da1c7c.png",
     "static/media/Saints.png": "/footballGames/static/media/Saints.e29d39eaf1f77f1d453d.png",
     "static/media/Bears.png": "/footballGames/static/media/Bears.ebc098452a314f388847.png",
@@ -39,19 +40,21 @@
     "static/media/Seahawks.png": "/footballGames/static/media/Seahawks.6879cc6c7bb833b4c2e3.png",
     "static/media/Patriots.png": "/footballGames/static/media/Patriots.d6a6a1e919d0b1e0d06a.png",
     "static/media/Bengals.png": "/footballGames/static/media/Bengals.920a4ebff6b692aa03f7.png",
+    "static/media/Money_Money.png": "/footballGames/static/media/Money_Money.0e4653004992ff4d1264.png",
     "static/media/Dolphins.png": "/footballGames/static/media/Dolphins.3179c9e47dce6f6f12fd.png",
+    "static/media/Commanders.png": "/footballGames/static/media/Commanders.9d3cd6f03411feeba7c0.png",
     "static/media/FootballTeam.png": "/footballGames/static/media/FootballTeam.9d3cd6f03411feeba7c0.png",
     "static/media/Giants.png": "/footballGames/static/media/Giants.d18546036a6e823b88e4.png",
     "static/media/Rams.png": "/footballGames/static/media/Rams.004a62247b8e1c255944.png",
     "static/media/AFC.png": "/footballGames/static/media/AFC.0611864d17ef047515c6.png",
     "static/media/NFC.png": "/footballGames/static/media/NFC.3425393f2bcc7c05c0ea.png",
     "index.html": "/footballGames/index.html",
-    "main.ccbc7ea5.css.map": "/footballGames/static/css/main.ccbc7ea5.css.map",
-    "main.13321740.js.map": "/footballGames/static/js/main.13321740.js.map",
+    "main.ccc56eef.css.map": "/footballGames/static/css/main.ccc56eef.css.map",
+    "main.0bdf493b.js.map": "/footballGames/static/js/main.0bdf493b.js.map",
     "787.e0bc491a.chunk.js.map": "/footballGames/static/js/787.e0bc491a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ccbc7ea5.css",
-    "static/js/main.13321740.js"
+    "static/css/main.ccc56eef.css",
+    "static/js/main.0bdf493b.js"
   ]
 }
