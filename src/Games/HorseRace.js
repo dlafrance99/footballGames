@@ -16,76 +16,18 @@ const HorseRace = () => {
     const [OffensiveCards, setOffensiveCards] = useState([])
     const [GroupLevel, setGroupLevel] = useState(0)
 
-    const [TeamBets, setTeamBets] = useState([
-        {
-            Manager: "Katie Schmidt",
-            StartingScore: 9,
-            Team: "49ers",
-            Bet: 2,
-            Level: 0
-        },
-        {
-            Manager: "Sabrina LaCombe",
-            StartingScore: 8,
-            Team: "Bears",
-            Bet: 3,
-            Level: 0
-        },
-        {
-            Manager: "Jesse Ireland",
-            StartingScore: 5,
-            Team: "Bengals",
-            Bet: 2,
-            Level: 0
-        },
-        {
-            Manager: "Nick LaCombe",
-            StartingScore: 5,
-            Team: "Bills",
-            Bet: 3,
-            Level: 0
-        },
-        {
-            Manager: "Devon LaFrance",
-            StartingScore: 4,
-            Team: "Broncos",
-            Bet: 2,
-            Level: 0
-        },
-        {
-            Manager: "Kyle LaCombe",
-            StartingScore: 2,
-            Team: "Eagles",
-            Bet: 3,
-            Level: 0
-        },
-        {
-            Manager: "Räley Gonzalez",
-            StartingScore: 2,
-            Team: "Commanders",
-            Bet: 2,
-            Level: 0
-        },
-        {
-            Manager: "Tyler Smith",
-            StartingScore: 1,
-            Team: "Dolphins",
-            Bet: 3,
-            Level: 0
+    const [TeamBets, setTeamBets] = useState(ManagerScore.sort((a, b) => {
+        if (a.Score === b.Score) {
+            return a.Name.localeCompare(b.Name);
         }
-    ])
-    // const [TeamBets, setTeamBets] = useState(ManagerScore.sort((a, b) => {
-    //     if (a.Score === b.Score) {
-    //         return a.Name.localeCompare(b.Name);
-    //     }
-    //     return b.Score - a.Score;
-    // }).map((manager) => ({
-    //     Manager: manager.Name,
-    //     StartingScore: manager.Score,
-    //     Team: 'AFC',
-    //     Bet: 0,
-    //     Level: 0
-    // })))
+        return b.Score - a.Score;
+    }).map((manager) => ({
+        Manager: manager.Name,
+        StartingScore: manager.Score,
+        Team: 'AFC',
+        Bet: 0,
+        Level: 0
+    })))
 
     const [NFLTeams, setNFLTeams] = useState(NFLTeamList)
 
@@ -142,16 +84,15 @@ const HorseRace = () => {
         let updatedDefensiveCards = []
         for (let i = 0; i < 5; i++) {
             updatedDefensiveCards.push({
-                Team: getRandomCard(TeamBets.map((manager) => manager.Team)),
-                Level: i + 1
+                Team: getRandomCard(TeamBets),
+                Level: i
             })
         }
         setDefensiveCards(updatedDefensiveCards)
     }
 
-    const HandleNewCard = () => {
-        //write the logic to check if they need to flip a defensive card and handle that
-        let NewCard = getRandomCard(TeamBets.map((manager) => manager.Team))
+    const handleOffensiveCard = () => {
+        let NewCard = getRandomCard(TeamBets)
         let UpdatedOffensiveCards = OffensiveCards
         UpdatedOffensiveCards.push(NewCard)
         setOffensiveCards(UpdatedOffensiveCards)
@@ -167,11 +108,99 @@ const HorseRace = () => {
                 updatedTeamBets.push(TeamBets[i])
             }
         }
+
+        let HighestLevel = updatedTeamBets[0].Level
+
+        for (let i = 0; i < updatedTeamBets.length; i++) {
+            if (updatedTeamBets[i].Level > HighestLevel) {
+                HighestLevel = updatedTeamBets[i].Level
+            }
+        }
+
+        setTeamBets(updatedTeamBets)
+
+        if (HighestLevel === 6) {
+            handleGameOver()
+        }
+    }
+
+    const HandleNewCard = () => {
+        let currentLevel = TeamBets[0].Level
+
+        for (let i = 0; i < TeamBets.length; i++) {
+            if (TeamBets[i].Level < currentLevel) {
+                currentLevel = TeamBets[i].Level
+            }
+        }
+
+        if (currentLevel > GroupLevel) {
+            handleDefensiveCard(GroupLevel)
+            let newLevel = GroupLevel
+            setGroupLevel(newLevel + 1)
+        } else {
+            handleOffensiveCard()
+        }
+    }
+
+    const handleDefensiveCard = (Level) => {
+        let updatedTeamBets = []
+        for (let i = 0; i < TeamBets.length; i++) {
+            if (DefensiveCards[Level].Team === TeamBets[i].Team) {
+                updatedTeamBets.push({
+                    ...TeamBets[i],
+                    Level: TeamBets[i].Level - 1
+                })
+            } else {
+                updatedTeamBets.push(TeamBets[i])
+            }
+        }
         setTeamBets(updatedTeamBets)
     }
 
     const getRandomCard = (Deck) => {
-        return Deck[Math.floor(Math.random() * Deck.length)]
+        let DeckArray = []
+
+        for (let i = 0; i < Deck.length; i++) {
+            for (let j = 0; j < 6 - Deck[i].Level; j++) {
+                DeckArray.push(Deck[i].Team)
+            }
+        }
+
+        console.log(DeckArray)
+
+        return DeckArray[Math.floor(Math.random() * DeckArray.length)]
+    }
+
+    const handleGameOver = () => {
+        let Winner = returnWinner()
+
+        let updatedTeamBets = []
+        for (let i = 0; i < TeamBets.length; i++) {
+            if (Winner.Manager === TeamBets[i].Manager) {
+                updatedTeamBets.push({
+                    ...TeamBets[i],
+                    FinalScore: TeamBets[i].StartingScore + TeamBets[i].Bet
+                })
+            } else {
+                updatedTeamBets.push({
+                    ...TeamBets[i],
+                    FinalScore: TeamBets[i].StartingScore - TeamBets[i].Bet
+                })
+            }
+        }
+        setTeamBets(updatedTeamBets)
+
+        setGameOver(true)
+    }
+
+    const returnWinner = () => {
+        let winner = TeamBets[0]
+        for (let i = 0; i < TeamBets.length; i++) {
+            if (TeamBets[i].Level > winner.Level) {
+                winner = TeamBets[i]
+            }
+        }
+        return winner
     }
 
     return (
@@ -188,7 +217,7 @@ const HorseRace = () => {
                 GameOver
                     ?
                     <>
-                        {/* <Row className='GameTitle'>
+                        <Row className='GameTitle'>
                             <Col sm={24}>
                                 <h1>
                                     Game Over
@@ -199,23 +228,95 @@ const HorseRace = () => {
                         <Row className='GameTitle'>
                             <Col sm={24}>
                                 <h2>
-                                    {(GameOverTime - GameStartTime) / 1000} seconds
+                                    Winner
+                                </h2>
+                                <h2>
+                                    {returnWinner().Manager}
+                                    <div style={{ height: '10vh' }}>
+                                        <img
+                                            src={require(`../Assets/TeamImages/${returnWinner().Team}.png`)}
+                                            alt='team logo'
+                                            style={{
+                                                objectFit: 'contain',
+                                                width: '100%',
+                                                height: '100%',
+                                            }}
+                                        />
+                                    </div>
                                 </h2>
 
-                                <ButtonToolbar style={{ width: '50%', margin: 'auto', marginTop: '15px', height: '100%', alignContent: 'center', textAlign: 'center' }}>
+                                <h1>
+                                    Draft Order Leaderboard
+                                </h1>
+                                
+                                <div style={{ width: '50%', margin: 'auto', marginBottom: '50px' }}>
+                                    <div style={{ display: 'flex', flexDirection: 'row', borderBottom: '1px solid white', paddingBottom: '5px', paddingTop: '5px' }}>
+                                        <h3 style={{ flex: 1 }}>
+                                            Rank
+                                        </h3>
+                                        <h3 style={{ flex: 3 }}>
+                                            Manager
+                                        </h3>
+                                        <h3 style={{ flex: 1 }}>
+                                            Starting
+                                        </h3>
+                                        <h3 style={{ flex: 1 }}>
+                                            Bet
+                                        </h3>
+                                        <h3 style={{ flex: 1 }}>
+                                            Final
+                                        </h3>
+                                    </div>
+                                    {
+                                        TeamBets
+                                            .sort((a, b) => {
+                                                if (a.FinalScore === b.FinalScore) {
+                                                    return a.Manager.localeCompare(b.Manager);
+                                                }
+                                                return b.FinalScore - a.FinalScore;
+                                            })
+                                            .map((Leader, i, sortedArray) => {
+                                                // Determine the rank
+                                                let rank = 1;
+                                                if (i > 0 && sortedArray[i].FinalScore === sortedArray[i - 1].FinalScore) {
+                                                    rank = sortedArray[i - 1].rank;
+                                                } else if (i > 0) {
+                                                    rank = sortedArray[i - 1].rank + 1;
+                                                }
+                                                sortedArray[i].rank = rank;
+                                                return (
+                                                    <div style={{ display: 'flex', flexDirection: 'row', borderBottom: '1px solid white', paddingBottom: '5px', paddingTop: '5px' }}>
+                                                        <h3 style={{ flex: 1 }}>
+                                                            {rank}
+                                                        </h3>
+                                                        <h3 style={{ flex: 3 }}>
+                                                            {Leader.Manager}
+                                                        </h3>
+                                                        <h3 style={{ flex: 1 }}>
+                                                            {Leader.StartingScore}
+                                                        </h3>
+                                                        <h3 style={{ flex: 1 }}>
+                                                            {Leader.Bet}
+                                                        </h3>
+                                                        <h3 style={{ flex: 1 }}>
+                                                            {Leader.FinalScore}
+                                                        </h3>
+                                                    </div>
+                                                )
+                                            })
+                                    }
+                                </div>
+
+                                {/* <ButtonToolbar style={{ width: '50%', margin: 'auto', marginTop: '15px', height: '100%', alignContent: 'center', textAlign: 'center' }}>
                                     <Button
                                         style={{ fontSize: '25px', padding: '10px 15px 10px 15px', backgroundColor: 'transparent', border: '2px solid green', color: 'green', borderRadius: '5px', cursor: 'pointer' }}
                                         onClick={() => handleRestart()}
                                     >
                                         Restart
                                     </Button>
-                                </ButtonToolbar>
+                                </ButtonToolbar> */}
                             </Col>
                         </Row>
-
-                        <Row>
-
-                        </Row> */}
                     </>
                     :
                     <>
@@ -456,7 +557,7 @@ const HorseRace = () => {
                                                                     objectFit: 'contain',
                                                                     height: '2%',
                                                                     width: '100%',
-                                                                    borderRight: '1px solid white',
+                                                                    borderLeft: '1px solid white',
                                                                 }}
                                                             />
                                                         ))

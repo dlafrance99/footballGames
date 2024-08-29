@@ -65,12 +65,12 @@ const GameSelectionScreen = ({ handleGameSelection }) => {
                     />
                 </Col>
                 <Col
-                    style={{ width: '20%', marginLeft: '5px', marginRight: '5px', cursor: checkDate([new Date('August 31 2024'), new Date('August 31 2024')]) ? 'pointer' : 'not-allowed' }}
-                    onClick={checkDate([new Date('August 31 2024'), new Date('August 31 2024')]) ? () => handleGameSelection('Horse Race') : null}
+                    style={{ width: '20%', marginLeft: '5px', marginRight: '5px', cursor: checkDate([new Date('August 31 2024'), new Date('September 1 2024')]) ? 'pointer' : 'not-allowed' }}
+                    onClick={checkDate([new Date('August 31 2024'), new Date('September 1 2024')]) ? () => handleGameSelection('Horse Race') : null}
                 >
                     <GameCard
                         Title='Horse Race'
-                        availableDates={[new Date('August 31 2024'), new Date('August 31 2024')]}
+                        availableDates={[new Date('August 31 2024'), new Date('September 1 2024')]}
 
                     />
                 </Col>

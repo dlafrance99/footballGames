@@ -14,6 +14,14 @@ const Leaderboard = () => {
 
     const [SelectedGame, setSelectedGame] = useState('')
 
+    const convertMilliseconds = (seconds) => {
+        const minutes = Math.floor(seconds / 60);
+        const sec = Math.floor(seconds % 60);
+        const ms = Math.floor((seconds % 1) * 1000);
+    
+        return `${minutes!==0?String(minutes).padStart(2, '0')+':':''}${String(sec).padStart(2, '0')}.${String(ms).padStart(3, '0')}`;
+    };
+
     return (
         <Grid>
             <Row className='GameTitle'>
@@ -78,15 +86,7 @@ const Leaderboard = () => {
 
                     />
                 </Col>
-                <Col
-                    style={{ width: '10%', marginLeft: '5px', marginRight: '5px', cursor: 'pointer' }}
-                    onClick={() => setSelectedGame('Wheres Thunder')}
-                >
-                    <GameCard
-                        Title='Wheres Thunder'
-
-                    />
-                </Col>
+                
                 <Col
                     style={{ width: '10%', marginLeft: '5px', marginRight: '5px', cursor: 'pointer' }}
                     onClick={() => setSelectedGame('Miscellaneous')}
@@ -97,9 +97,19 @@ const Leaderboard = () => {
                     />
                 </Col>
 
-                {/* <Col
+                <Col
                     style={{ width: '10%', marginLeft: '5px', marginRight: '5px', cursor: 'pointer' }}
-                    onClick={() => console.log('hit this')}
+                    onClick={() => setSelectedGame('Wheres Thunder')}
+                >
+                    <GameCard
+                        Title='Wheres Thunder'
+
+                    />
+                </Col>
+
+                <Col
+                    style={{ width: '10%', marginLeft: '5px', marginRight: '5px', cursor: 'pointer' }}
+                    onClick={() => setSelectedGame('Footbordle24')}
                 >
                     <GameCard
                         Title='Footbordle24'
@@ -107,7 +117,7 @@ const Leaderboard = () => {
                     />
                 </Col>
 
-
+                {/*
                 <Col
                     style={{ width: '10%', marginLeft: '5px', marginRight: '5px', cursor: 'pointer' }}
                     onClick={() => console.log('hit this')}
@@ -169,23 +179,38 @@ const Leaderboard = () => {
                                                 }
                                                 return a.MoneyMoney - b.MoneyMoney;
                                             }
-                                            else if (SelectedGame === 'Wheres Thunder') {
-                                                if (a.FindThunderTime === b.FindThunderTime) {
-                                                    return a.Name.localeCompare(b.Name);
-                                                }
-                                                return a.FindThunderTime - b.FindThunderTime;
-                                            }
                                             else if (SelectedGame === 'Miscellaneous') {
                                                 if (a.Miscellaneous === b.Miscellaneous) {
                                                     return a.Name.localeCompare(b.Name);
                                                 }
                                                 return b.Miscellaneous - a.Miscellaneous;
                                             }
+                                            else if (SelectedGame === 'Wheres Thunder') {
+                                                if (a.FindThunderTime === b.FindThunderTime) {
+                                                    return a.Name.localeCompare(b.Name);
+                                                }
+                                                return a.FindThunderTime - b.FindThunderTime;
+                                            }
+                                            else if (SelectedGame === 'Footbordle24') {
+                                                if (a.FootbordleTime === b.FootbordleTime) {
+                                                    return a.Name.localeCompare(b.Name);
+                                                }
+                                                return a.FootbordleTime - b.FootbordleTime;
+                                            }
+                                            
                                         })
                                         .map((Leader, i, sortedArray) => {
                                             let rank = 1;
                                             if (SelectedGame === 'Money Money') {
                                                 if (i > 0 && sortedArray[i].MoneyMoney === sortedArray[i - 1].MoneyMoney) {
+                                                    rank = sortedArray[i - 1].rank;
+                                                } else if (i > 0) {
+                                                    rank = sortedArray[i - 1].rank + 1;
+                                                }
+                                                sortedArray[i].rank = rank;
+                                            }
+                                            else if (SelectedGame === 'Miscellaneous') {
+                                                if (i > 0 && sortedArray[i].Miscellaneous === sortedArray[i - 1].Miscellaneous) {
                                                     rank = sortedArray[i - 1].rank;
                                                 } else if (i > 0) {
                                                     rank = sortedArray[i - 1].rank + 1;
@@ -200,8 +225,8 @@ const Leaderboard = () => {
                                                 }
                                                 sortedArray[i].rank = rank;
                                             }
-                                            else if (SelectedGame === 'Miscellaneous') {
-                                                if (i > 0 && sortedArray[i].Miscellaneous === sortedArray[i - 1].Miscellaneous) {
+                                            else if (SelectedGame === 'Footbordle24') {
+                                                if (i > 0 && sortedArray[i].FootbordleTime === sortedArray[i - 1].FootbordleTime) {
                                                     rank = sortedArray[i - 1].rank;
                                                 } else if (i > 0) {
                                                     rank = sortedArray[i - 1].rank + 1;
@@ -219,6 +244,9 @@ const Leaderboard = () => {
                                                 else if (SelectedGame === 'Miscellaneous') {
                                                     return Leader.Miscellaneous
                                                 }
+                                                else if (SelectedGame === 'Footbordle24') {
+                                                    return convertMilliseconds(Leader.FootbordleTime)
+                                                }
                                             }
 
                                             const showPoints = () => {
@@ -228,21 +256,21 @@ const Leaderboard = () => {
                                                 if (showScore() === 0) {
                                                     return 0
                                                 }
-                                                if (i === 0) {
+                                                if (rank === 1) {
                                                     return 8
-                                                } else if (i === 1) {
+                                                } else if (rank === 2) {
                                                     return 7
-                                                } else if (i === 2) {
+                                                } else if (rank === 3) {
                                                     return 6
-                                                } else if (i === 3) {
+                                                } else if (rank === 4) {
                                                     return 5
-                                                } else if (i === 4) {
+                                                } else if (rank === 5) {
                                                     return 4
-                                                } else if (i === 5) {
+                                                } else if (rank === 6) {
                                                     return 3
-                                                } else if (i === 6) {
+                                                } else if (rank === 7) {
                                                     return 2
-                                                } else if (i === 7) {
+                                                } else if (rank === 8) {
                                                     return 1
                                                 }
                                             }

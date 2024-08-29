@@ -10,7 +10,7 @@ import NFLPlayerList24 from '../NFLPlayerList24';
 const NFLMatch24 = () => {
     const [GameOver, setGameOver] = useState(false)
     const [GameRound, setGameRound] = useState(0)
-    const [GameData, setGameData] = useState(0)
+    const [GameData, setGameData] = useState([])
     const [Selected, setSelected] = useState([])
     const [Solved, setSolved] = useState([])
     const [StartTime, setStartTime] = useState()
@@ -69,41 +69,43 @@ const NFLMatch24 = () => {
     }
 
     useEffect(() => {
-        setStartTime(new Date())
+        setStartTime(new Date())        
     }, [])
+
     useEffect(() => {
         updateData()
     }, [GameRound])
 
-    const updateData = () => {
+    const updateData = () => {        
         let data = []
         switch (GameRound) {
             case 0:
-                data = TEList
+                data = NFLPlayerList24.filter(player => player.Position === 'TE')
                 break
             case 1:
-                data = QBList
+                data = NFLPlayerList24.filter(player => player.Position === 'QB')
                 break
             case 2:
-                data = RBList
+                data = NFLPlayerList24.filter(player => player.Position === 'RB')
                 break
             case 3:
-                data = WRList
+                data = NFLPlayerList24.filter(player => player.Position === 'WR')
                 break
         }
         data = shuffle(data)
-        data = data.splice(0, 12)
+        data = data.splice(0, 10)
 
         data = data.concat(data)
-        data = shuffle(data)
+        data = shuffle(data)        
         setGameData(data)
     }
 
     const showGame = () => {
         let grid = []
         let CurrentSelected = Selected.map((choice) => choice.index)
-        console.log(GameData);
-        for (let i = 0; i < GameData.length; i += 6) {
+        
+
+        for (let i = 0; i < GameData.length; i += 5) {
             grid.push(
                 <div key={i} style={{ width: '100%', flexDirection: 'row', display: 'flex' }}>
                     {
@@ -292,45 +294,6 @@ const NFLMatch24 = () => {
 
                             </div>
                     }
-
-                    {
-                        GameData[i + 5]
-                            ?
-                            <>
-                                {
-                                    CurrentSelected.includes(i + 5) || Solved.includes(GameData[i + 5].imgUrl)
-                                        ?
-                                        <div key={i + 5} style={{ flex: 1, height: '10vw', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white', margin: '15px', display: 'flex', alignItems: 'center' }}>
-                                            <img
-                                                src={GameData[i + 5].imgUrl}
-                                                style={{ objectFit: 'contain' }}
-                                                height='100%'
-                                                width='100%'
-                                            />
-                                        </div>
-                                        :
-                                        GameData[i + 5].imgUrl === ''
-                                            ?
-                                            <div key={i} onClick={() => handleSelection(i, GameData[i + 5].imgUrl)} style={{ flex: 1, height: '10vw', justifyContent: 'center', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white', margin: '15px', display: 'flex', alignItems: 'center' }}>
-                                                <h1 style={{ fontFamily: 'Luminari, fantasy', letterSpacing: '5px' }}>
-                                                    {GameData[i + 5].First} {GameData[i + 5].Last}
-                                                </h1>
-                                            </div>
-                                            :
-                                            <div key={i + 5} onClick={() => handleSelection(i + 5, GameData[i + 5].imgUrl)} style={{ flex: 1, height: '10vw', justifyContent: 'center', textAlign: 'center', verticalAlign: 'middle', border: '1px solid white', margin: '15px', display: 'flex', alignItems: 'center' }}>
-                                                <h1 style={{ fontFamily: 'Luminari, fantasy', letterSpacing: '5px' }}>
-                                                    Fantasies
-                                                </h1>
-                                            </div>
-                                }
-                            </>
-                            :
-                            <div key={i + 5} style={{ flex: 1, height: '10vw', textAlign: 'center', verticalAlign: 'middle', margin: '15px', display: 'flex', alignItems: 'center' }}>
-
-                            </div>
-                    }
-
-
                 </div>
             )
         }
@@ -360,13 +323,7 @@ const NFLMatch24 = () => {
         GameDuration = new Date(GameDuration).toISOString().slice(11, 23)
         GameDuration = `Time: ${GameDuration} `
         return (
-            <>
-                {/* <h2 style={{ color: 'white' }}>
-                    {GameStartTime}
-                </h2> */}
-                <h2 style={{ color: 'white' }}>
-                    {GameEndTime}
-                </h2>
+            <>                
                 <h2 style={{ color: 'white' }}>
                     {GameDuration}
                 </h2>
@@ -379,7 +336,7 @@ const NFLMatch24 = () => {
             <Row className='GameTitle'>
                 <Col sm={24}>
                     <h1>
-                        Fantasy NFL Match 23
+                        Fantasy NFL Match 24
                     </h1>
                 </Col>
             </Row>
