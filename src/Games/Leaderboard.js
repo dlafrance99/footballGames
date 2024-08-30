@@ -18,8 +18,8 @@ const Leaderboard = () => {
         const minutes = Math.floor(seconds / 60);
         const sec = Math.floor(seconds % 60);
         const ms = Math.floor((seconds % 1) * 1000);
-    
-        return `${minutes!==0?String(minutes).padStart(2, '0')+':':''}${String(sec).padStart(2, '0')}.${String(ms).padStart(3, '0')}`;
+
+        return `${minutes !== 0 ? String(minutes).padStart(2, '0') + ':' : ''}${String(sec).padStart(2, '0')}.${String(ms).padStart(3, '0')}`;
     };
 
     return (
@@ -86,7 +86,7 @@ const Leaderboard = () => {
 
                     />
                 </Col>
-                
+
                 <Col
                     style={{ width: '10%', marginLeft: '5px', marginRight: '5px', cursor: 'pointer' }}
                     onClick={() => setSelectedGame('Miscellaneous')}
@@ -117,17 +117,17 @@ const Leaderboard = () => {
                     />
                 </Col>
 
-                {/*
+
                 <Col
                     style={{ width: '10%', marginLeft: '5px', marginRight: '5px', cursor: 'pointer' }}
-                    onClick={() => console.log('hit this')}
+                    onClick={() => setSelectedGame('Up And Down The NFL')}
                 >
                     <GameCard
                         Title='Up And Down The NFL'
 
                     />
                 </Col>
-
+                {/*
                 <Col
                     style={{ width: '10%', marginLeft: '5px', marginRight: '5px', cursor: 'pointer' }}
                     onClick={() => console.log('hit this')}
@@ -197,7 +197,13 @@ const Leaderboard = () => {
                                                 }
                                                 return a.FootbordleTime - b.FootbordleTime;
                                             }
-                                            
+                                            else if (SelectedGame === 'Up And Down The NFL') {
+                                                if (a.UpAndDownTHeNFLTime === b.UpAndDownTHeNFLTime) {
+                                                    return a.Name.localeCompare(b.Name);
+                                                }
+                                                return a.UpAndDownTHeNFLTime - b.UpAndDownTHeNFLTime;
+                                            }
+
                                         })
                                         .map((Leader, i, sortedArray) => {
                                             let rank = 1;
@@ -233,6 +239,14 @@ const Leaderboard = () => {
                                                 }
                                                 sortedArray[i].rank = rank;
                                             }
+                                            else if (SelectedGame === 'Up And Down The NFL') {
+                                                if (i > 0 && sortedArray[i].UpAndDownTHeNFLTime === sortedArray[i - 1].UpAndDownTHeNFLTime) {
+                                                    rank = sortedArray[i - 1].rank;
+                                                } else if (i > 0) {
+                                                    rank = sortedArray[i - 1].rank + 1;
+                                                }
+                                                sortedArray[i].rank = rank;
+                                            }
 
                                             const showScore = () => {
                                                 if (SelectedGame === 'Money Money') {
@@ -246,6 +260,9 @@ const Leaderboard = () => {
                                                 }
                                                 else if (SelectedGame === 'Footbordle24') {
                                                     return convertMilliseconds(Leader.FootbordleTime)
+                                                }
+                                                else if (SelectedGame === 'Up And Down The NFL') {
+                                                    return convertMilliseconds(Leader.UpAndDownTHeNFLTime)
                                                 }
                                             }
 
