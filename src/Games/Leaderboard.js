@@ -127,17 +127,17 @@ const Leaderboard = () => {
 
                     />
                 </Col>
-                {/*
+
                 <Col
                     style={{ width: '10%', marginLeft: '5px', marginRight: '5px', cursor: 'pointer' }}
-                    onClick={() => console.log('hit this')}
+                    onClick={() => setSelectedGame('NFLMatch24')}
                 >
                     <GameCard
                         Title='NFLMatch24'
 
                     />
                 </Col>
-
+                {/*
                 <Col
                     style={{ width: '10%', marginLeft: '5px', marginRight: '5px', cursor: 'pointer' }}
                     onClick={() => console.log('hit this')}
@@ -203,6 +203,12 @@ const Leaderboard = () => {
                                                 }
                                                 return a.UpAndDownTHeNFLTime - b.UpAndDownTHeNFLTime;
                                             }
+                                            else if (SelectedGame === 'NFLMatch24') {
+                                                if (a.NFLMatchTime === b.NFLMatchTime) {
+                                                    return a.Name.localeCompare(b.Name);
+                                                }
+                                                return a.NFLMatchTime - b.NFLMatchTime;
+                                            }
 
                                         })
                                         .map((Leader, i, sortedArray) => {
@@ -247,6 +253,14 @@ const Leaderboard = () => {
                                                 }
                                                 sortedArray[i].rank = rank;
                                             }
+                                            else if (SelectedGame === 'NFLMatch24') {
+                                                if (i > 0 && sortedArray[i].NFLMatchTime === sortedArray[i - 1].NFLMatchTime) {
+                                                    rank = sortedArray[i - 1].rank;
+                                                } else if (i > 0) {
+                                                    rank = sortedArray[i - 1].rank + 1;
+                                                }
+                                                sortedArray[i].rank = rank;
+                                            }
 
                                             const showScore = () => {
                                                 if (SelectedGame === 'Money Money') {
@@ -263,6 +277,9 @@ const Leaderboard = () => {
                                                 }
                                                 else if (SelectedGame === 'Up And Down The NFL') {
                                                     return convertMilliseconds(Leader.UpAndDownTHeNFLTime)
+                                                }
+                                                else if (SelectedGame === 'NFLMatch24') {
+                                                    return convertMilliseconds(Leader.NFLMatchTime)
                                                 }
                                             }
 
