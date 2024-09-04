@@ -8,6 +8,8 @@ const ManagerScore = [
         FootbordleTime: 42.828,
         UpAndDownTHeNFLTime: 35.539,
         NFLMatchTime: 156.924,
+        Horse: 'Broncos',
+        Bet: 5,
     },
     {
         Name: 'Katie Schmidt',
@@ -18,6 +20,8 @@ const ManagerScore = [
         FootbordleTime: 170.329,
         UpAndDownTHeNFLTime: 39.499,
         NFLMatchTime: 178.419,
+        Horse: 'Lions',
+        Bet: 2,
     },
     {
         Name: 'Räley Gonzalez',
@@ -28,6 +32,8 @@ const ManagerScore = [
         FootbordleTime: 68.589,
         UpAndDownTHeNFLTime: 12.131,
         NFLMatchTime: 163.976,
+        Horse: 'Bills',
+        Bet: 0,
     },
     {
         Name: 'Jesse Ireland',
@@ -38,6 +44,8 @@ const ManagerScore = [
         FootbordleTime: 584.413,
         UpAndDownTHeNFLTime: 600,
         NFLMatchTime: 165.806,
+        Horse: 'Packers',
+        Bet: 10,
     },
     {
         Name: 'Nick LaCombe',
@@ -48,6 +56,8 @@ const ManagerScore = [
         FootbordleTime: 600,
         UpAndDownTHeNFLTime: 600,
         NFLMatchTime: 600,
+        Horse: 'Jets',
+        Bet: 16,
     },
     {
         Name: 'Kyle LaCombe',
@@ -58,6 +68,8 @@ const ManagerScore = [
         FootbordleTime: 600,
         UpAndDownTHeNFLTime: 53.332,
         NFLMatchTime: 600,
+        Horse: 'Bengals',
+        Bet: 10,
     },
     {
         Name: 'Tyler Smith',
@@ -68,6 +80,8 @@ const ManagerScore = [
         FootbordleTime: 142.996,
         UpAndDownTHeNFLTime: 24.039,
         NFLMatchTime: 428.332,
+        Horse: '49ers',
+        Bet: 15,
     },
     {
         Name: 'Sabrina LaCombe',
@@ -78,6 +92,8 @@ const ManagerScore = [
         FootbordleTime: 600,
         UpAndDownTHeNFLTime: 600,
         NFLMatchTime: 600,
+        Horse: 'Chiefs',
+        Bet: 5,
     },
 ]
 

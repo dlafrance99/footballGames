@@ -24,8 +24,8 @@ const HorseRace = () => {
     }).map((manager) => ({
         Manager: manager.Name,
         StartingScore: manager.Score,
-        Team: 'AFC',
-        Bet: 0,
+        Team: manager.Horse,
+        Bet: manager.Bet,
         Level: 0
     })))
 
@@ -71,7 +71,7 @@ const HorseRace = () => {
     const StartDisabled = () => {
         let disabled = false
         for (let i = 0; i < TeamBets.length; i++) {
-            if (TeamBets[i].Bet === 0 || TeamBets[i].Team === 'AFC') {
+            if (TeamBets[i].Bet === null || TeamBets[i].Team === 'AFC') {
                 return true
             }
         }
